@@ -33,6 +33,7 @@ const StyledMediaVideoCard = styled.iframe`
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
   margin-bottom: 20px;
   width: 100%;
+  overflow: hidden;
 `;
 
 export class MediaCard extends React.Component {
