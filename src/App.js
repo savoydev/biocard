@@ -9,7 +9,6 @@ function App() {
   return (
     <AppContainer>
       <UserCard name="Artist Name Here" description="Artist bio can go here" />
-      <SocialMediaCard />
       <TextCard
         link="https://open.spotify.com/album/0MOImG9dhPplgcVsrOveK5?si=7hR53EyvQXGm0FXJpJJu0A"
         title="Mixed Feelings"
@@ -21,6 +20,7 @@ function App() {
         link="https://open.spotify.com/album/0MOImG9dhPplgcVsrOveK5?si=7hR53EyvQXGm0FXJpJJu0A"
         title="Mixed Feelings"
       />
+      <SocialMediaCard />
     </AppContainer>
   );
 }
