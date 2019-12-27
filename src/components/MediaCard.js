@@ -1,7 +1,10 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+import { fadeIn } from "react-animations";
 import COLORS from "../constants/Colors";
 import BasicCard from "./BasicCard";
+
+const fadeAnimation = keyframes`${fadeIn}`;
 
 const StyledMediaCard = styled(BasicCard)`
   background: url(${props => props.bgImage});
@@ -35,6 +38,7 @@ const StyledMediaVideoCard = styled.div`
   width: 100%;
   height: 310px;
   overflow: hidden;
+  animation: 1s ${fadeAnimation};
 `;
 
 export class MediaCard extends React.Component {

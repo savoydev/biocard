@@ -1,5 +1,8 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+import { fadeIn } from "react-animations";
+
+const fadeAnimation = keyframes`${fadeIn}`;
 
 const StyledBasicCard = styled.a`
   border-radius: 10px;
@@ -11,6 +14,7 @@ const StyledBasicCard = styled.a`
   text-decoration: none !important;
   overflow: hidden;
   position: relative;
+  animation: 1s ${fadeAnimation};
 `;
 
 const BasicCard = props => {

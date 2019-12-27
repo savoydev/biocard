@@ -7,6 +7,7 @@ import socialSites from "../data/Social";
 const StyledSocialMediaCard = styled.div`
   padding: 10px;
   text-align: center;
+  margin: 30px 0;
 `;
 
 const getSocialSites = () => {
