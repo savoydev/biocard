@@ -3,7 +3,6 @@ import styled from "styled-components";
 import COLORS from "../constants/Colors";
 
 const StyledMediaCard = styled.a`
-  background-color: #fff;
   border-radius: 10px;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
   padding: 20px;
@@ -12,30 +11,36 @@ const StyledMediaCard = styled.a`
   display: block;
   text-decoration: none !important;
   overflow: hidden;
+  background: url(${props => props.bgImage});
+  background-size: cover;
+  background-position: center;
+  min-height: 200px;
+  position: relative;
 `;
 
-const MediaCardText = styled.div`
-  float: left;
-`;
-
-const MediaCardTitle = styled.div`
-  color: ${COLORS.PRUSSIAN_BLUE};
+const StyledMediaCardText = styled.div`
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 20px 0;
+  background-color: rgba(0, 0, 0, 0.77);
+  text-align: center;
+  width: 100%;
   font-size: 1.25rem;
-  font-weight: bold;
-  margin-bottom: 10px;
+  box-shadow: 0px -36px 36px 15px rgba(0, 0, 0, 0.77);
 `;
 
-const MediaCardDescription = styled.div`
-  color: ${COLORS.PRUSSIAN_BLUE};
-  font-size: 1rem;
+const StyledMediaCardTitle = styled.div`
+  color: ${COLORS.EGGSHELL};
+  font-weight: bold;
 `;
+
 const MediaCard = props => {
   return (
-    <StyledMediaCard href={props.link}>
-      <MediaCardText>
-        <MediaCardTitle>{props.title}</MediaCardTitle>
-        <MediaCardDescription>{props.description}</MediaCardDescription>
-      </MediaCardText>
+    <StyledMediaCard bgImage={props.image}>
+      <StyledMediaCardText>
+        <StyledMediaCardTitle>Mixed Feelings</StyledMediaCardTitle>
+      </StyledMediaCardText>
     </StyledMediaCard>
   );
 };
