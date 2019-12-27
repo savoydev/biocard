@@ -27,12 +27,13 @@ const StyledMediaCardTitle = styled.div`
   font-weight: bold;
 `;
 
-const StyledMediaVideoCard = styled.iframe`
+const StyledMediaVideoCard = styled.div`
   width: 100%;
   border-radius: 10px;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
   margin-bottom: 20px;
   width: 100%;
+  height: 310px;
   overflow: hidden;
 `;
 
@@ -49,14 +50,17 @@ export class MediaCard extends React.Component {
     if (link.includes("youtube") && link.includes("embed")) {
       let embedString = link.split("/embed/").pop();
       return (
-        <StyledMediaVideoCard
-          title={this.props.title}
-          height="315"
-          src={`https://www.youtube.com/embed/${embedString}`}
-          frameBorder="0"
-          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-        ></StyledMediaVideoCard>
+        <StyledMediaVideoCard>
+          <iframe
+            width="100%"
+            title={this.props.title}
+            height="315"
+            src={`https://www.youtube.com/embed/${embedString}`}
+            frameBorder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        </StyledMediaVideoCard>
       );
     } else {
       return (
