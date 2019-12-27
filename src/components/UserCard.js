@@ -3,7 +3,7 @@ import styled from "styled-components";
 import COLORS from "../constants/Colors";
 
 const StyledUserCard = styled.div`
-  background-color: #fff;
+  background-color: ${COLORS.IVORY_BLACK};
   border-radius: 10px;
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
   padding: 20px;
@@ -19,10 +19,11 @@ const UserName = styled.div`
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 10px;
+  color: ${COLORS.EGGSHELL};
 `;
 
 const UserDescription = styled.div`
-  color: ${COLORS.SKY_BLUE};
+  color: ${COLORS.EGGSHELL};
   font-size: 1rem;
 `;
 
