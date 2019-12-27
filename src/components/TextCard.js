@@ -1,17 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import COLORS from "../constants/Colors";
+import BasicCard from "./BasicCard";
 
-const StyledMediaCard = styled.a`
+const StyledTextCard = styled(BasicCard)`
   background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
-  padding: 20px;
-  overflow: hidden;
-  margin-bottom: 20px;
-  display: block;
-  text-decoration: none !important;
-  overflow: hidden;
 `;
 
 const MediaCardText = styled.div`
@@ -31,12 +24,12 @@ const MediaCardDescription = styled.div`
 `;
 const TextCard = props => {
   return (
-    <StyledMediaCard href={props.link}>
+    <StyledTextCard href={props.link}>
       <MediaCardText>
         <MediaCardTitle>{props.title}</MediaCardTitle>
         <MediaCardDescription>{props.description}</MediaCardDescription>
       </MediaCardText>
-    </StyledMediaCard>
+    </StyledTextCard>
   );
 };
 

@@ -1,21 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import COLORS from "../constants/Colors";
+import BasicCard from "./BasicCard";
 
-const StyledMediaCard = styled.a`
-  border-radius: 10px;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
-  padding: 20px;
-  overflow: hidden;
-  margin-bottom: 20px;
-  display: block;
-  text-decoration: none !important;
-  overflow: hidden;
+const StyledMediaCard = styled(BasicCard)`
   background: url(${props => props.bgImage});
   background-size: cover;
   background-position: center;
   min-height: 200px;
-  position: relative;
 `;
 
 const StyledMediaCardText = styled.div`
