@@ -1,14 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import COLORS from "../constants/Colors";
+import BasicCard from "./BasicCard";
 
-const StyledUserCard = styled.div`
-  background-color: ${COLORS.IVORY_BLACK};
-  border-radius: 10px;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
-  padding: 20px;
-  overflow: hidden;
-  margin-bottom: 10px;
+const StyledUserCard = styled(BasicCard)`
+  background-color: #fff;
 `;
 
 const UserText = styled.div`
@@ -19,11 +15,11 @@ const UserName = styled.div`
   font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 10px;
-  color: ${COLORS.EGGSHELL};
+  color: ${COLORS.PRUSSIAN_BLUE};
 `;
 
 const UserDescription = styled.div`
-  color: ${COLORS.EGGSHELL};
+  color: ${COLORS.PRUSSIAN_BLUE};
   font-size: 1rem;
 `;
 

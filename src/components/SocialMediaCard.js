@@ -10,6 +10,19 @@ const StyledSocialMediaCard = styled.div`
   margin: 30px 0;
 `;
 
+const Button = styled.button`
+  padding: 10px 20px;
+  border-radius: 50px;
+  margin: 0 auto;
+  margin-top: 30px;
+  text-align: center;
+  text-transform: uppercase;
+  background: none;
+  color: ${COLORS.SKY_BLUE}
+  display: block;
+  border: 1px solid ${COLORS.SKY_BLUE};
+`;
+
 const getSocialSites = () => {
   let userSocialSites = socialSites;
   let renderSocialSites = [];
@@ -28,7 +41,12 @@ const getSocialSites = () => {
 
 const SocialMediaCard = props => {
   const socials = getSocialSites();
-  return <StyledSocialMediaCard>{socials}</StyledSocialMediaCard>;
+  return (
+    <StyledSocialMediaCard>
+      {socials}
+      <Button type="button">Create your link bio</Button>
+    </StyledSocialMediaCard>
+  );
 };
 
 export default SocialMediaCard;
