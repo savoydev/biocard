@@ -8,7 +8,7 @@ const StyledUserCard = styled.div`
   box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
   padding: 20px;
   overflow: hidden;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 `;
 
 const UserText = styled.div`
