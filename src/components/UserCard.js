@@ -14,7 +14,7 @@ const UserText = styled.div`
 const UserName = styled.div`
   font-size: 2rem;
   font-weight: bold;
-  margin-bottom: 10px;
+  font-family: "Heebo";
   color: ${COLORS.PRUSSIAN_BLUE};
 `;
 
@@ -35,10 +35,10 @@ const UserImage = styled.div`
 const UserCard = props => {
   return (
     <StyledUserCard>
-      <UserImage />
+      {/* <UserImage /> */}
       <UserText>
         <UserName>{props.name}</UserName>
-        <UserDescription>{props.description}</UserDescription>
+        {/* <UserDescription>{props.description}</UserDescription> */}
       </UserText>
     </StyledUserCard>
   );

@@ -15,25 +15,35 @@ const StyledMediaCard = styled(BasicCard)`
 
 const StyledMediaCardText = styled.div`
   position: absolute;
+  top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   padding: 20px;
-  background-color: rgba(0, 0, 0, 0.77);
   text-align: center;
   font-size: 2rem;
-  box-shadow: 0px -36px 36px 15px rgba(0, 0, 0, 0.77);
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    31deg,
+    rgba(2, 0, 36, 0.9) 0%,
+    rgba(11, 60, 93, 0.8) 48%,
+    rgba(50, 140, 193, 0.25) 100%
+  );
 `;
 
 const StyledMediaCardTitle = styled.div`
   color: ${COLORS.EGGSHELL};
   font-weight: bold;
+  font-family: "Heebo";
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
 `;
 
 const StyledMediaVideoCard = styled.div`
   width: 100%;
   border-radius: 15px;
-  box-shadow: 0px 5px 10px rgba(130, 130, 130, 0.25);
+  box-shadow: 0px 5px 10px rgba(130, 130, 130, 0.35);
   margin-bottom: 20px;
   width: 100%;
   height: 310px;

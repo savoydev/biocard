@@ -11,7 +11,7 @@ import COLORS from "../constants/Colors";
 
 const StyledAppContainer = styled.div`
   background-color: ${COLORS.EGGSHELL};
-  padding: 10px;
+  padding: 16px;
   height: 100%;
 `;
 
