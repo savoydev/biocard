@@ -1,6 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import COLORS from "../constants/Colors";
+import TextCard from "./TextCard";
+import MediaCard from "./MediaCard";
+import SocialMediaCard from "./SocialMediaCard";
+import UserCard from "./UserCard";
 
 /// COLOR PALETTE
 /// prussian blue #0b3c5d
