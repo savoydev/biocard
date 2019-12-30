@@ -6,7 +6,7 @@ const fadeAnimation = keyframes`${fadeIn}`;
 
 const StyledBasicCard = styled.a`
   border-radius: 15px;
-  box-shadow: 0px 5px 10px rgba(130, 130, 130, 0.35);
+  box-shadow: 0px 5px 10px rgba(130, 130, 130, 0.45);
   padding: 20px;
   overflow: hidden;
   margin-bottom: 20px;
@@ -14,7 +14,7 @@ const StyledBasicCard = styled.a`
   text-decoration: none !important;
   overflow: hidden;
   position: relative;
-  animation: 1s ${fadeAnimation};
+  animation: 2s ${fadeAnimation};
   transition: all 0.3s;
 
   :hover {

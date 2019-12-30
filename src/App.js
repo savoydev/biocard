@@ -20,6 +20,7 @@ function App() {
         description="Check out my latest release!"
       />
       <MediaCard link="https://www.youtube.com/embed/VxWlL1Phh70" />
+      <MediaCard link="https://www.youtube.com/watch?v=0FtJMvnHjU4" />
       <SocialMediaCard />
     </AppContainer>
   );

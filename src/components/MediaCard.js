@@ -43,7 +43,7 @@ const StyledMediaCardTitle = styled.div`
 const StyledMediaVideoCard = styled.div`
   width: 100%;
   border-radius: 15px;
-  box-shadow: 0px 5px 10px rgba(130, 130, 130, 0.35);
+  box-shadow: 0px 5px 10px rgba(130, 130, 130, 0.45);
   margin-bottom: 20px;
   width: 100%;
   height: 310px;
@@ -51,6 +51,11 @@ const StyledMediaVideoCard = styled.div`
   position: relative;
   z-index: 1;
   animation: 1s ${fadeAnimation};
+  :hover {
+    transform: scale(1.025);
+    transition: all 0.3s;
+    box-shadow: 0px 5px 15px rgba(130, 130, 130, 0.25);
+  }
 `;
 
 export class MediaCard extends React.Component {
@@ -60,11 +65,22 @@ export class MediaCard extends React.Component {
 
   componentDidMount() {}
 
+  getYoutubeEmbedType = () => {
+    let link = this.props.link;
+    let embedString = "";
+    if (link.includes("embed")) {
+      embedString = link.split("/embed/").pop();
+    } else if (link.includes("watch")) {
+      embedString = link.split("/watch?v=").pop();
+    }
+    return embedString;
+  };
+
   getLinkType = props => {
     let link = this.props.link;
 
-    if (link.includes("youtube") && link.includes("embed")) {
-      let embedString = link.split("/embed/").pop();
+    if (link.includes("youtube")) {
+      let embedString = this.getYoutubeEmbedType();
       return (
         <StyledMediaVideoCard>
           <iframe

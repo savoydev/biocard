@@ -7,6 +7,11 @@ const StyledUserCard = styled(BasicCard)`
 //   background-color: ${COLORS.IVORY_BLACK};
   min-height: 100px;
   box-shadow: none;
+
+  :hover {
+      transform: none;
+      box-shadow: none;
+  }
 `;
 
 const UserText = styled.div`
