@@ -6,7 +6,7 @@ const fadeAnimation = keyframes`${fadeIn}`;
 
 const StyledBasicCard = styled.a`
   border-radius: 15px;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 5px 10px rgba(130, 130, 130, 0.25);
   padding: 20px;
   overflow: hidden;
   margin-bottom: 20px;

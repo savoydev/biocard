@@ -12,7 +12,7 @@ const UserText = styled.div`
 `;
 
 const UserName = styled.div`
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: bold;
   margin-bottom: 10px;
   color: ${COLORS.PRUSSIAN_BLUE};

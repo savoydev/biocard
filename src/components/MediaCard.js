@@ -21,7 +21,7 @@ const StyledMediaCardText = styled.div`
   padding: 20px;
   background-color: rgba(0, 0, 0, 0.77);
   text-align: center;
-  font-size: 1.25rem;
+  font-size: 2rem;
   box-shadow: 0px -36px 36px 15px rgba(0, 0, 0, 0.77);
 `;
 
@@ -33,7 +33,7 @@ const StyledMediaCardTitle = styled.div`
 const StyledMediaVideoCard = styled.div`
   width: 100%;
   border-radius: 15px;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.25);
+  box-shadow: 0px 5px 10px rgba(130, 130, 130, 0.25);
   margin-bottom: 20px;
   width: 100%;
   height: 310px;

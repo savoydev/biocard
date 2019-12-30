@@ -13,7 +13,7 @@ const MediaCardText = styled.div`
 
 const MediaCardTitle = styled.div`
   color: ${COLORS.PRUSSIAN_BLUE};
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 10px;
 `;
