@@ -56,6 +56,10 @@ const StyledMediaVideoCard = styled.div`
     transition: all 0.3s;
     box-shadow: 0px 5px 15px rgba(130, 130, 130, 0.25);
   }
+
+  > iframe {
+    z-index: 0;
+  }
 `;
 
 export class MediaCard extends React.Component {

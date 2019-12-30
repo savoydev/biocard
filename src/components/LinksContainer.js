@@ -2,6 +2,7 @@ import React from "react";
 import UserCard from "./UserCard";
 import MediaCard from "./MediaCard";
 import TextCard from "./TextCard";
+import CreateLinkCard from "./CreateLink";
 
 class LinksContainer extends React.Component {
   constructor(props) {
@@ -61,12 +62,14 @@ class LinksContainer extends React.Component {
     return (
       <React.Fragment>
         <UserCard
+          image="https://i1.sndcdn.com/avatars-000378232415-umh2jq-t500x500.jpg"
           name="Artist Name Here"
           description="Artist bio can go here"
         />
         {renderLinks}
         <MediaCard link="https://www.youtube.com/embed/VxWlL1Phh70" />
         <MediaCard link="https://www.youtube.com/watch?v=0FtJMvnHjU4" />
+        <CreateLinkCard />
       </React.Fragment>
     );
   }

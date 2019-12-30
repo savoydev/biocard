@@ -51,15 +51,21 @@ const UserImage = styled.div`
     left: 3px;
     border-radius: 100%;
     background-color: #fff;
+    background-image: url('${props => props.image}');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
   }
 `;
 
 const UserCard = props => {
   return (
     <StyledUserCard>
-      <UserImage>
-        <div></div>
-      </UserImage>
+      {props.image && (
+        <UserImage image={props.image}>
+          <div></div>
+        </UserImage>
+      )}
       <UserText>
         <UserName>{props.name}</UserName>
         <UserDescription>{props.description}</UserDescription>
