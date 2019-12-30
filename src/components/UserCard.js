@@ -4,8 +4,9 @@ import COLORS from "../constants/Colors";
 import BasicCard from "./BasicCard";
 
 const StyledUserCard = styled(BasicCard)`
-  background-color: ${COLORS.IVORY_BLACK};
+//   background-color: ${COLORS.IVORY_BLACK};
   min-height: 100px;
+  box-shadow: none;
 `;
 
 const UserText = styled.div`
@@ -13,14 +14,14 @@ const UserText = styled.div`
 `;
 
 const UserName = styled.div`
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: bold;
   font-family: "Heebo";
-  color: ${COLORS.EGGSHELL};
+  color: ${COLORS.IVORY_BLACK};
 `;
 
 const UserDescription = styled.div`
-  color: ${COLORS.EGGSHELL};
+  color: ${COLORS.IVORY_BLACK};
   font-size: 1rem;
 `;
 
@@ -28,9 +29,8 @@ const UserImage = styled.div`
   background: rgb(2, 0, 36);
   background: linear-gradient(
     31deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(11, 60, 93, 1) 48%,
-    rgba(50, 140, 193, 1) 100%
+    rgba(11, 60, 93, 1) 0%,
+    rgba(50, 140, 193, 1) 50%
   );
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.24);
   border-radius: 100%;
@@ -39,11 +39,11 @@ const UserImage = styled.div`
   margin: 0 auto;
 
   div {
-    height: 90px;
-    width: 90px;
+    height: 94px;
+    width: 94px;
     position: relative;
-    top: 5px;
-    left: 5px;
+    top: 3px;
+    left: 3px;
     border-radius: 100%;
     background-color: #fff;
   }
