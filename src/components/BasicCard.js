@@ -18,9 +18,11 @@ const StyledBasicCard = styled.a`
   transition: all 0.3s;
 
   :hover {
-    transform: scale(1.025);
-    transition: all 0.3s;
-    box-shadow: 0px 5px 15px rgba(130, 130, 130, 0.25);
+    @media (min-width: 768px) {
+      transform: scale(1.025);
+      transition: all 0.3s;
+      box-shadow: 0px 5px 15px rgba(130, 130, 130, 0.25);
+    }
   }
 `;
 

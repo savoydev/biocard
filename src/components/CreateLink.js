@@ -69,7 +69,7 @@ class CreateLinkCard extends Component {
       showCreateCard: false,
       Title: "",
       Link: "",
-      Image: "",
+      ImageURL: "",
       Description: ""
     };
   }
@@ -81,28 +81,76 @@ class CreateLinkCard extends Component {
     });
   };
 
+  submitLink = event => {
+    event.preventDefault();
+    this.addLink();
+  };
+
+  addLink = () => {
+    let newLink = {
+      ImageURL: this.state.ImageURL,
+      Title: this.state.Title,
+      Description: this.state.Description,
+      Link: this.state.Link
+    };
+    this.props.addLink(newLink);
+    this.setState({
+      showCreateCard: false,
+      Title: "",
+      Link: "",
+      ImageURL: "",
+      Description: ""
+    });
+  };
+
+  onChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
   render() {
+    const { Title, Link, ImageURL, Description } = this.state;
     return (
       <React.Fragment>
         {this.state.showCreateCard && (
           <CreateLinkCardStyled>
-            <form onSubmit={this.addLink}>
+            <form onSubmit={this.submitLink}>
               <InputWrapper>
-                <InputLabel>Title</InputLabel>
-                <InputField type="text" />
+                <InputLabel htmlFor="Title">Title</InputLabel>
+                <InputField
+                  type="text"
+                  name="Title"
+                  onChange={this.onChange}
+                  value={Title}
+                />
               </InputWrapper>
               <InputWrapper>
-                <InputLabel>Link</InputLabel>
-                <InputField type="text" />
+                <InputLabel htmlFor="Link">Link</InputLabel>
+                <InputField
+                  type="text"
+                  name="Link"
+                  onChange={this.onChange}
+                  value={Link}
+                />
               </InputWrapper>
               <InputWrapper>
-                <InputLabel>Image URL</InputLabel>
-                <InputField type="text" />
+                <InputLabel htmlFor="ImageURL">Image URL</InputLabel>
+                <InputField
+                  type="text"
+                  name="ImageURL"
+                  onChange={this.onChange}
+                  value={ImageURL}
+                />
               </InputWrapper>
               <InputWrapper>
-                <InputLabel>Description</InputLabel>
-                <InputField type="text" />
+                <InputLabel htmlFor="Description">Description</InputLabel>
+                <InputField
+                  type="text"
+                  name="Description"
+                  onChange={this.onChange}
+                  value={Description}
+                />
               </InputWrapper>
+              <Button type="Submit">Add Link</Button>
             </form>
           </CreateLinkCardStyled>
         )}
@@ -111,7 +159,7 @@ class CreateLinkCard extends Component {
           onClick={this.showCreateCard}
           disabled={this.state.showCreateCard}
         >
-          Add new link
+          Create new link
         </Button>
       </React.Fragment>
     );

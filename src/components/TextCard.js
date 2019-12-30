@@ -21,20 +21,29 @@ const MediaCardTitle = styled.div`
   color: ${COLORS.EGGSHELL};
   font-size: 1.5rem;
   font-weight: bold;
-  margin-bottom: 10px;
   font-family: "Heebo";
 `;
 
 const MediaCardDescription = styled.div`
+  margin-top: 10px;
   color: ${COLORS.EGGSHELL};
   font-size: 1rem;
 `;
 const TextCard = props => {
   return (
-    <StyledTextCard href={props.link}>
+    <StyledTextCard
+      href={
+        props.link.includes("https") || props.link.includes("http")
+          ? props.link
+          : `https://${props.link}`
+      }
+      target="_blank"
+    >
       <MediaCardText>
         <MediaCardTitle>{props.title}</MediaCardTitle>
-        <MediaCardDescription>{props.description}</MediaCardDescription>
+        {props.description && (
+          <MediaCardDescription>{props.description}</MediaCardDescription>
+        )}
       </MediaCardText>
     </StyledTextCard>
   );

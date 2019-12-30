@@ -52,9 +52,11 @@ const StyledMediaVideoCard = styled.div`
   z-index: 1;
   animation: 1s ${fadeAnimation};
   :hover {
-    transform: scale(1.025);
-    transition: all 0.3s;
-    box-shadow: 0px 5px 15px rgba(130, 130, 130, 0.25);
+    @media (min-width: 768px) {
+      transform: scale(1.025);
+      transition: all 0.3s;
+      box-shadow: 0px 5px 15px rgba(130, 130, 130, 0.25);
+    }
   }
 
   > iframe {
@@ -100,7 +102,16 @@ export class MediaCard extends React.Component {
       );
     } else {
       return (
-        <StyledMediaCard bgImage={this.props.image} href={this.props.link}>
+        <StyledMediaCard
+          bgImage={this.props.image}
+          href={
+            this.props.link.includes("https") ||
+            this.props.link.includes("http")
+              ? this.props.link
+              : `https://${this.props.link}`
+          }
+          target="_blank"
+        >
           {this.props.title && (
             <StyledMediaCardText>
               <StyledMediaCardTitle>{this.props.title}</StyledMediaCardTitle>

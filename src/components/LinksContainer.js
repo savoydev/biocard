@@ -11,15 +11,15 @@ class LinksContainer extends React.Component {
     this.state = {
       Links: [
         {
-          Image:
+          ImageURL:
             "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FBHsq0b7HxFc%2Fmaxresdefault.jpg&f=1&nofb=1",
           Link:
             "https://open.spotify.com/album/0MOImG9dhPplgcVsrOveK5?si=7hR53EyvQXGm0FXJpJJu0A",
           Title: "Mixed Feelings",
-          Description: ""
+          Description: "New single"
         },
         {
-          Image: "",
+          ImageURL: "",
           Link:
             "https://open.spotify.com/album/0MOImG9dhPplgcVsrOveK5?si=7hR53EyvQXGm0FXJpJJu0A",
           Title: "Mixed Feelings",
@@ -29,17 +29,25 @@ class LinksContainer extends React.Component {
     };
   }
 
+  addLink = link => {
+    this.setState({
+      Links: this.state.Links.concat(link)
+    });
+  };
+
   renderLinkTypes = () => {
     let links = this.state.Links;
     let linkComponents = [];
     if (links.length) {
       for (let i = 0; i < links.length; i++) {
-        if (links[i].Image.length) {
+        if (links[i].ImageURL.length || links[i].Link.includes("youtube")) {
           linkComponents.push(
             <MediaCard
-              image={links[i].Image}
+              image={links[i].ImageURL}
               link={links[i].Link}
               title={links[i].Title}
+              description={links[i].Description}
+              key={i}
             />
           );
         } else {
@@ -48,6 +56,7 @@ class LinksContainer extends React.Component {
               link={links[i].Link}
               title={links[i].Title}
               description={links[i].Description}
+              key={i}
             />
           );
         }
@@ -69,7 +78,7 @@ class LinksContainer extends React.Component {
         {renderLinks}
         <MediaCard link="https://www.youtube.com/embed/VxWlL1Phh70" />
         <MediaCard link="https://www.youtube.com/watch?v=0FtJMvnHjU4" />
-        <CreateLinkCard />
+        <CreateLinkCard addLink={this.addLink} />
       </React.Fragment>
     );
   }
