@@ -1,16 +1,18 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import { fadeIn } from "react-animations";
+import { fadeIn, slideInUp } from "react-animations";
 import COLORS from "../constants/Colors";
 import BasicCard from "./BasicCard";
 
 const fadeAnimation = keyframes`${fadeIn}`;
+const slideInUpAnimation = keyframes`${slideInUp}`;
 
 const StyledMediaCard = styled(BasicCard)`
   background: url(${props => props.bgImage});
   background-size: cover;
   background-position: center;
   min-height: 200px;
+  animation: 0.5s ${slideInUpAnimation};
 `;
 
 const StyledMediaCardText = styled.div`
@@ -50,7 +52,7 @@ const StyledMediaVideoCard = styled.div`
   overflow: hidden;
   position: relative;
   z-index: 1;
-  animation: 1s ${fadeAnimation};
+  animation: 0.5s ${slideInUpAnimation};
   :hover {
     @media (min-width: 768px) {
       transform: scale(1.025);
