@@ -1,10 +1,7 @@
 import React from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import COLORS from "../constants/Colors";
 import BasicCard from "./BasicCard";
-import { slideInUp } from "react-animations";
-
-const slideInUpAnimation = keyframes`${slideInUp}`;
 
 const StyledTextCard = styled(BasicCard)`
   background: rgb(2, 0, 36);
@@ -14,7 +11,6 @@ const StyledTextCard = styled(BasicCard)`
     rgba(11, 60, 93, 1) 48%,
     rgba(50, 140, 193, 1) 100%
   );
-  animation: 0.5s ${slideInUpAnimation};
 `;
 
 const MediaCardText = styled.div`
