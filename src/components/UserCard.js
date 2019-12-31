@@ -1,16 +1,17 @@
 import React from "react";
 import styled from "styled-components";
-import COLORS from "../constants/Colors";
 import BasicCard from "./BasicCard";
+import CARD_STYLES from "../constants/CardStyles";
+
+const cardStyle = CARD_STYLES.ROUND;
 
 const StyledUserCard = styled(BasicCard)`
-//   background-color: ${COLORS.IVORY_BLACK};
   min-height: 100px;
   box-shadow: none;
 
   :hover {
-      transform: none;
-      box-shadow: none;
+    transform: none;
+    box-shadow: none;
   }
 `;
 
@@ -22,22 +23,17 @@ const UserName = styled.div`
   font-size: 2rem;
   font-weight: bold;
   font-family: "Heebo";
-  color: ${COLORS.IVORY_BLACK};
+  color: ${props => props.color.BASE};
 `;
 
 const UserDescription = styled.div`
-  color: ${COLORS.IVORY_BLACK};
+  color: ${props => props.color.BASE};
   font-size: 1rem;
 `;
 
 const UserImage = styled.div`
-  background: rgb(2, 0, 36);
-  background: linear-gradient(
-    31deg,
-    rgba(11, 60, 93, 1) 0%,
-    rgba(50, 140, 193, 1) 50%
-  );
-  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.24);
+  background: ${props => props.color.DEFAULT_GRADIENT}
+  box-shadow: ${props => props.cardStyle.USER_IMAGE_SHADOW};
   border-radius: 100%;
   height: 100px;
   width: 100px;
@@ -60,15 +56,21 @@ const UserImage = styled.div`
 
 const UserCard = props => {
   return (
-    <StyledUserCard>
+    <StyledUserCard cardStyle={props.cardStyle}>
       {props.image && (
-        <UserImage image={props.image}>
+        <UserImage
+          image={props.image}
+          color={props.color}
+          cardStyle={props.cardStyle}
+        >
           <div></div>
         </UserImage>
       )}
       <UserText>
-        <UserName>{props.name}</UserName>
-        <UserDescription>{props.description}</UserDescription>
+        <UserName color={props.color}>{props.name}</UserName>
+        <UserDescription color={props.color}>
+          {props.description}
+        </UserDescription>
       </UserText>
     </StyledUserCard>
   );

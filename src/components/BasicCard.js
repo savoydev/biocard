@@ -1,12 +1,13 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import { fadeIn } from "react-animations";
+import CARD_STYLES from "../constants/CardStyles";
 
 const fadeAnimation = keyframes`${fadeIn}`;
 
 const StyledBasicCard = styled.a`
-  border-radius: 15px;
-  box-shadow: 0px 5px 10px rgba(130, 130, 130, 0.45);
+  border-radius: ${props => props.cardStyle.BORDER_RADIUS};
+  box-shadow: ${props => props.cardStyle.CARD_SHADOW};
   padding: 20px;
   overflow: hidden;
   margin-bottom: 20px;

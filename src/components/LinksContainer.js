@@ -3,12 +3,16 @@ import UserCard from "./UserCard";
 import MediaCard from "./MediaCard";
 import TextCard from "./TextCard";
 import CreateLinkCard from "./CreateLink";
+import COLORS from "../constants/Colors";
+import CARD_STYLES from "../constants/CardStyles";
 
 class LinksContainer extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      Color: COLORS.IVORY_BLACK,
+      CardStyle: CARD_STYLES.FLAT,
       Links: [
         {
           ImageURL:
@@ -22,6 +26,18 @@ class LinksContainer extends React.Component {
           ImageURL: "",
           Link:
             "https://open.spotify.com/album/0MOImG9dhPplgcVsrOveK5?si=7hR53EyvQXGm0FXJpJJu0A",
+          Title: "Mixed Feelings",
+          Description: "Check out my lastest release"
+        },
+        {
+          ImageURL: "",
+          Link: "https://www.youtube.com/embed/VxWlL1Phh70",
+          Title: "Mixed Feelings",
+          Description: "Check out my lastest release"
+        },
+        {
+          ImageURL: "",
+          Link: "https://www.youtube.com/watch?v=0FtJMvnHjU4",
           Title: "Mixed Feelings",
           Description: "Check out my lastest release"
         }
@@ -47,6 +63,8 @@ class LinksContainer extends React.Component {
               link={links[i].Link}
               title={links[i].Title}
               description={links[i].Description}
+              color={this.state.Color}
+              cardStyle={this.state.CardStyle}
               key={i}
             />
           );
@@ -56,6 +74,8 @@ class LinksContainer extends React.Component {
               link={links[i].Link}
               title={links[i].Title}
               description={links[i].Description}
+              color={this.state.Color}
+              cardStyle={this.state.CardStyle}
               key={i}
             />
           );
@@ -74,11 +94,15 @@ class LinksContainer extends React.Component {
           image="https://i1.sndcdn.com/avatars-000378232415-umh2jq-t500x500.jpg"
           name="Artist Name Here"
           description="Artist bio can go here"
+          color={this.state.Color}
+          cardStyle={this.state.CardStyle}
         />
         {renderLinks}
-        <MediaCard link="https://www.youtube.com/embed/VxWlL1Phh70" />
-        <MediaCard link="https://www.youtube.com/watch?v=0FtJMvnHjU4" />
-        <CreateLinkCard addLink={this.addLink} />
+        <CreateLinkCard
+          color={this.state.Color}
+          cardStyle={this.state.CardStyle}
+          addLink={this.addLink}
+        />
       </React.Fragment>
     );
   }

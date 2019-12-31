@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import BasicCard from "./BasicCard";
-import styled, { ThemeConsumer } from "styled-components";
+import styled from "styled-components";
 import COLORS from "../constants/Colors";
 
 const CreateLinkCardStyled = styled(BasicCard)`
@@ -13,7 +13,7 @@ const InputWrapper = styled.div`
 
 const InputLabel = styled.label`
   margin-right: 10px;
-  color: ${COLORS.PRUSSIAN_BLUE};
+  color: ${props => props.color.BASE};
   font-family: "Heebo";
   font-size: 1.25rem;
   line-height: 1.25rem;
@@ -22,8 +22,8 @@ const InputLabel = styled.label`
 `;
 
 const InputField = styled.input`
-  border: 2px solid #0b3c5d30;
-  border-radius: 10px;
+  border: 2px solid ${props => props.color.LIGHT};
+  border-radius: ${props => props.cardStyle.BORDER_RADIUS};
   height: 50px;
   position: relaitve;
   top: -3px;
@@ -31,28 +31,25 @@ const InputField = styled.input`
   font-size: 1.25rem;
   padding-left: 8px;
   box-sizing: border-box;
-  color: ${COLORS.PRUSSIAN_BLUE};
+  color: ${props => props.color.BASE};
 `;
 
 const Button = styled.button`
-  background: rgb(2, 0, 36);
-  background: linear-gradient(
-    31deg,
-    rgba(11, 60, 93, 1) 0%,
-    rgba(50, 140, 193, 1) 70%
-  );
+  background: ${props => props.color.DEFAULT_GRADIENT};
   color: ${COLORS.EGGSHELL};
+  font-family: "Open Sans";
+  font-weight: bold;
   border: none;
   font-size: 1.25rem;
   line-height: 2.5rem;
-  border-radius: 30px;
+  border-radius: ${props => props.cardStyle.BTN_BORDER_RADIUS};
   margin: 0 auto;
   display: block;
   min-width: 100px;
   padding: 10px 30px;
   margin-bottom: 20px;
   cursor: pointer;
-  box-shadow: 0px 5px 10px rgba(130, 130, 130, 0.45);
+  box-shadow: ${props => props.cardStyle.BTN_SHADOW};
   transition: all 0.3s;
   :hover {
     transform: scale(1.025);
@@ -112,52 +109,79 @@ class CreateLinkCard extends Component {
     return (
       <React.Fragment>
         {this.state.showCreateCard && (
-          <CreateLinkCardStyled>
+          <CreateLinkCardStyled
+            color={this.props.color}
+            cardStyle={this.props.cardStyle}
+          >
             <form onSubmit={this.submitLink}>
               <InputWrapper>
-                <InputLabel htmlFor="Title">Title</InputLabel>
+                <InputLabel htmlFor="Title" color={this.props.color}>
+                  Title
+                </InputLabel>
                 <InputField
                   type="text"
                   name="Title"
+                  color={this.props.color}
                   onChange={this.onChange}
                   value={Title}
+                  cardStyle={this.props.cardStyle}
                 />
               </InputWrapper>
               <InputWrapper>
-                <InputLabel htmlFor="Link">Link</InputLabel>
+                <InputLabel htmlFor="Link" color={this.props.color}>
+                  Link
+                </InputLabel>
                 <InputField
                   type="text"
                   name="Link"
+                  color={this.props.color}
                   onChange={this.onChange}
                   value={Link}
+                  cardStyle={this.props.cardStyle}
                 />
               </InputWrapper>
               <InputWrapper>
-                <InputLabel htmlFor="ImageURL">Image URL</InputLabel>
+                <InputLabel htmlFor="ImageURL" color={this.props.color}>
+                  Image URL
+                </InputLabel>
                 <InputField
                   type="text"
                   name="ImageURL"
+                  color={this.props.color}
                   onChange={this.onChange}
                   value={ImageURL}
+                  cardStyle={this.props.cardStyle}
                 />
               </InputWrapper>
               <InputWrapper>
-                <InputLabel htmlFor="Description">Description</InputLabel>
+                <InputLabel htmlFor="Description" color={this.props.color}>
+                  Description
+                </InputLabel>
                 <InputField
                   type="text"
                   name="Description"
+                  color={this.props.color}
                   onChange={this.onChange}
                   value={Description}
+                  cardStyle={this.props.cardStyle}
                 />
               </InputWrapper>
-              <Button type="Submit">Add Link</Button>
+              <Button
+                type="Submit"
+                color={this.props.color}
+                cardStyle={this.props.cardStyle}
+              >
+                Add Link
+              </Button>
             </form>
           </CreateLinkCardStyled>
         )}
         <Button
           type="button"
+          color={this.props.color}
           onClick={this.showCreateCard}
           disabled={this.state.showCreateCard}
+          cardStyle={this.props.cardStyle}
         >
           Create new link
         </Button>

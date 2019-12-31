@@ -3,7 +3,10 @@ import COLORS from "../constants/Colors";
 import styled from "styled-components";
 import SocialIcon from "../components/SocialIcon";
 import socialSites from "../data/Social";
+import CARD_STYLES from "../constants/CardStyles";
 
+const THEME_COLOR = COLORS.PRUSSIAN_BLUE;
+const cardStyles = CARD_STYLES.ROUND;
 const StyledSocialMediaCard = styled.div`
   padding: 10px;
   text-align: center;
@@ -12,15 +15,15 @@ const StyledSocialMediaCard = styled.div`
 
 const Button = styled.button`
   padding: 10px 20px;
-  border-radius: 50px;
+  border-radius: ${cardStyles.BTN_BORDER_RADIUS};
   margin: 0 auto;
   margin-top: 30px;
   text-align: center;
   text-transform: uppercase;
   background: none;
-  color: ${COLORS.SKY_BLUE}
+  color: ${THEME_COLOR.BASE}
   display: block;
-  border: 1px solid ${COLORS.SKY_BLUE};
+  border: none;
 `;
 
 const getSocialSites = () => {

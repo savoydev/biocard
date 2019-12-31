@@ -22,13 +22,7 @@ const StyledMediaCardText = styled.div`
   padding: 20px;
   text-align: center;
   font-size: 2rem;
-  background: rgb(2, 0, 36);
-  background: linear-gradient(
-    31deg,
-    rgba(2, 0, 36, 0.9) 0%,
-    rgba(11, 60, 93, 0.8) 48%,
-    rgba(50, 140, 193, 0.25) 100%
-  );
+  background: ${props => props.color.BACKGROUND_GRADIENT};
 `;
 
 const StyledMediaCardTitle = styled.div`
@@ -42,8 +36,8 @@ const StyledMediaCardTitle = styled.div`
 
 const StyledMediaVideoCard = styled.div`
   width: 100%;
-  border-radius: 15px;
-  box-shadow: 0px 5px 10px rgba(130, 130, 130, 0.45);
+  border-radius: ${props => props.cardStyle.BORDER_RADIUS};
+  box-shadow: ${props => props.cardStyle.CARD_SHADOW};
   margin-bottom: 20px;
   width: 100%;
   height: 310px;
@@ -88,7 +82,7 @@ export class MediaCard extends React.Component {
     if (link.includes("youtube")) {
       let embedString = this.getYoutubeEmbedType();
       return (
-        <StyledMediaVideoCard>
+        <StyledMediaVideoCard cardStyle={this.props.cardStyle}>
           <iframe
             width="100%"
             title={this.props.title}
@@ -103,7 +97,9 @@ export class MediaCard extends React.Component {
     } else {
       return (
         <StyledMediaCard
+          color={props.color}
           bgImage={this.props.image}
+          cardStyle={this.props.cardStyle}
           href={
             this.props.link.includes("https") ||
             this.props.link.includes("http")
@@ -113,7 +109,7 @@ export class MediaCard extends React.Component {
           target="_blank"
         >
           {this.props.title && (
-            <StyledMediaCardText>
+            <StyledMediaCardText color={this.props.color}>
               <StyledMediaCardTitle>{this.props.title}</StyledMediaCardTitle>
             </StyledMediaCardText>
           )}
