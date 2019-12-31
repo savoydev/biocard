@@ -1,17 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import COLORS from "../constants/Colors";
-import TextCard from "./TextCard";
-import MediaCard from "./MediaCard";
-import SocialMediaCard from "./SocialMediaCard";
-import UserCard from "./UserCard";
-
-/// COLOR PALETTE
-/// prussian blue #0b3c5d
-/// sky blue #328cc1
-/// gold leaf #d9b310
-/// ivory black #1d2731
-/// effshell #f5f5f5
 
 const StyledAppContainer = styled.div`
   background-color: ${COLORS.EGGSHELL};

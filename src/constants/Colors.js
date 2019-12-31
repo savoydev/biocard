@@ -16,7 +16,16 @@ const COLORS = {
   SKY_BLUE: {
     BASE: "#328cc1",
     LIGHT: "#56c0ff",
-    LIGHTEST: "#b6d7eb"
+    LIGHTEST: "#b6d7eb",
+    get RGBA() {
+      return (hex, alpha) => hexToRgbA(hex, alpha);
+    },
+    get DEFAULT_GRADIENT() {
+      return gradient(this);
+    },
+    get BACKGROUND_GRADIENT() {
+      return bgGradient(this);
+    }
   },
   GOLD_LEAF: {
     BASE: "#d9b310",
@@ -48,7 +57,18 @@ const COLORS = {
   },
   EGGSHELL: "#f5f5f5",
   SUMMER_SKY: {
-    BASE: "#286DA8"
+    BASE: "#286DA8",
+    LIGHT: "#3fa6ff",
+    LIGHTEST: "#9fd3ff",
+    get RGBA() {
+      return (hex, alpha) => hexToRgbA(hex, alpha);
+    },
+    get DEFAULT_GRADIENT() {
+      return gradient(this);
+    },
+    get BACKGROUND_GRADIENT() {
+      return bgGradient(this);
+    }
   },
   WARM_PEACH: {
     BASE: "#CD5360",

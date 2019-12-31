@@ -5,6 +5,7 @@ import TextCard from "./TextCard";
 import CreateLinkCard from "./CreateLink";
 import COLORS from "../constants/Colors";
 import CARD_STYLES from "../constants/CardStyles";
+import ColorSelection from "./ColorSelection";
 
 class LinksContainer extends React.Component {
   constructor(props) {
@@ -86,6 +87,12 @@ class LinksContainer extends React.Component {
     return linkComponents;
   };
 
+  updateColor = color => {
+    this.setState({
+      Color: color
+    });
+  };
+
   render() {
     const renderLinks = this.renderLinkTypes();
     return (
@@ -102,6 +109,10 @@ class LinksContainer extends React.Component {
           color={this.state.Color}
           cardStyle={this.state.CardStyle}
           addLink={this.addLink}
+        />
+        <ColorSelection
+          cardStyle={this.state.CardStyle}
+          updateColor={this.updateColor}
         />
       </React.Fragment>
     );
