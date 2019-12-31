@@ -50,7 +50,7 @@ const Button = styled.button`
   display: block;
   min-width: 100px;
   padding: 10px 30px;
-  margin: 20px 0;
+  margin: 20px 0 40px 0;
   cursor: pointer;
   box-shadow: ${props => props.cardStyle.BTN_SHADOW};
   transition: all 0.3s;
