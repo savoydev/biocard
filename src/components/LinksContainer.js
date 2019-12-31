@@ -114,10 +114,15 @@ class LinksContainer extends React.Component {
   };
 
   updateColor = color => {
-    this.setState({
-      Color: color,
-      ShowColorSelection: false
-    });
+    this.setState(
+      {
+        Color: color,
+        ShowColorSelection: false
+      },
+      () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    );
   };
 
   showColorSelection = () => {
