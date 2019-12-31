@@ -1,7 +1,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
 import { fadeIn } from "react-animations";
-import CARD_STYLES from "../constants/CardStyles";
 
 const fadeAnimation = keyframes`${fadeIn}`;
 

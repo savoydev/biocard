@@ -39,7 +39,7 @@ class LinksContainer extends React.Component {
     this.state = {
       ShowColorSelection: false,
       Color: COLORS.IVORY_BLACK,
-      CardStyle: CARD_STYLES.FLAT,
+      CardStyle: CARD_STYLES.ROUND,
       Links: [
         {
           ImageURL:
@@ -114,21 +114,32 @@ class LinksContainer extends React.Component {
   };
 
   updateColor = color => {
+    this.setState({
+      Color: color
+    });
+  };
+
+  updateCardStyle = cardStyle => {
+    this.setState({
+      CardStyle: cardStyle
+    });
+  };
+
+  themeSelectionDone = () => {
+    this.setState({
+      ShowColorSelection: false
+    });
+  };
+
+  showColorSelection = () => {
     this.setState(
       {
-        Color: color,
-        ShowColorSelection: false
+        ShowColorSelection: true
       },
       () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
     );
-  };
-
-  showColorSelection = () => {
-    this.setState({
-      ShowColorSelection: true
-    });
   };
 
   render() {
@@ -158,7 +169,10 @@ class LinksContainer extends React.Component {
         </Button>
         {this.state.ShowColorSelection && (
           <ColorSelection
+            color={this.state.Color}
             cardStyle={this.state.CardStyle}
+            themeSelectionDone={this.themeSelectionDone}
+            updateCardStyle={this.updateCardStyle}
             updateColor={this.updateColor}
           />
         )}

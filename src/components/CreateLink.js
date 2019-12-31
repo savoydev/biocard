@@ -1,10 +1,27 @@
 import React, { Component } from "react";
 import BasicCard from "./BasicCard";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import COLORS from "../constants/Colors";
+import { slideInUp } from "react-animations";
+
+const slideInUpAnimation = keyframes`${slideInUp}`;
+
+const CreateLinkHeader = styled.div`
+  font-family: "Heebo";
+  font-size: 2rem;
+  margin-bottom: 10px;
+`;
 
 const CreateLinkCardStyled = styled(BasicCard)`
   background-color: #fff;
+  animation: 0.5s ${slideInUpAnimation};
+  position: fixed;
+  bottom: 0;
+  margin: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  box-shadow: ${props => props.cardStyle.CARD_TOP_SHADOW};
 `;
 
 const InputWrapper = styled.div`
@@ -113,6 +130,7 @@ class CreateLinkCard extends Component {
             color={this.props.color}
             cardStyle={this.props.cardStyle}
           >
+            <CreateLinkHeader>Create a new link</CreateLinkHeader>
             <form onSubmit={this.submitLink}>
               <InputWrapper>
                 <InputLabel htmlFor="Title" color={this.props.color}>
