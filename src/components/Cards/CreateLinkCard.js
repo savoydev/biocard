@@ -34,7 +34,7 @@ const InputField = styled.input.attrs(props => ({
 `;
 
 const StyledButton = styled(Button)`
-  margin: 40px 0;
+  margin: 40px 0 60px 0;
 `;
 
 class CreateLinkCard extends Component {
