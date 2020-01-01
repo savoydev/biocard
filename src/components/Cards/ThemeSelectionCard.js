@@ -80,9 +80,18 @@ const ThemeSelectionCard = props => {
       {allColors}
       <SlideCard.Header>Select a card style</SlideCard.Header>
       {allCardStyles}
-      <StyledButton type="button" onClick={props.themeSelectionDone}>
-        Finished
-      </StyledButton>
+      <SlideCard.ButtonRow>
+        <StyledButton type="button" onClick={props.themeSelectionDone}>
+          Finished
+        </StyledButton>
+        <StyledButton
+          type="button"
+          secondary
+          onClick={props.themeSelectionDone}
+        >
+          Cancel
+        </StyledButton>
+      </SlideCard.ButtonRow>
     </SlideCard>
   );
 };

@@ -195,6 +195,7 @@ class LinksContainer extends React.Component {
           color={this.state.Color}
           cardStyle={this.state.CardStyle}
           addLink={this.addLink}
+          linkCreationDone={this.linkCreationDone}
         />
         <ThemeSelectionCard
           show={this.state.ShowThemeSelection}

@@ -34,7 +34,7 @@ const InputField = styled.input.attrs(props => ({
 `;
 
 const StyledButton = styled(Button)`
-  margin: 40px 0 60px 0;
+  margin: 20px 0 60px 0;
 `;
 
 class EditCardLink extends React.Component {
@@ -111,11 +111,17 @@ class EditCardLink extends React.Component {
               value={this.props.link.Description}
             />
           </InputWrapper>
-          <StyledButton type="Submit">Save</StyledButton>
+          <SlideCard.ButtonRow>
+            <StyledButton type="Submit">Save</StyledButton>
+            <StyledButton
+              type="button"
+              secondary
+              onClick={this.props.linkEditDone}
+            >
+              Cancel
+            </StyledButton>
+          </SlideCard.ButtonRow>
         </form>
-        <StyledButton type="button" onClick={this.props.linkEditDone}>
-          Cancel
-        </StyledButton>
       </SlideCard>
     );
   }

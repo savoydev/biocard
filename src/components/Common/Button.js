@@ -3,8 +3,10 @@ import styled from "styled-components";
 import COLORS from "../../constants/Colors";
 
 const StyledButton = styled.button`
-  background: ${props => props.theme.color.DEFAULT_GRADIENT};
-  color: ${COLORS.EGGSHELL};
+  background: ${props =>
+    props.secondary ? "transparent;" : props.theme.color.DEFAULT_GRADIENT};
+  color: ${props =>
+    props.secondary ? props.theme.color.BASE : COLORS.EGGSHELL};
   font-family: "Open Sans";
   font-weight: bold;
   border: none;
@@ -17,7 +19,8 @@ const StyledButton = styled.button`
   padding: 10px 30px;
   margin-bottom: 20px;
   cursor: pointer;
-  box-shadow: ${props => props.theme.cardStyle.BTN_SHADOW};
+  box-shadow: ${props =>
+    props.secondary ? "none;" : props.theme.cardStyle.BTN_SHADOW};
   transition: all 0.3s;
   &:hover {
     transform: scale(1.025);

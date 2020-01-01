@@ -104,7 +104,16 @@ class CreateLinkCard extends Component {
               value={Description}
             />
           </InputWrapper>
-          <StyledButton type="Submit">Add Link</StyledButton>
+          <SlideCard.ButtonRow>
+            <StyledButton type="Submit">Add Link</StyledButton>
+            <StyledButton
+              type="button"
+              secondary
+              onClick={this.props.linkCreationDone}
+            >
+              Cancel
+            </StyledButton>
+          </SlideCard.ButtonRow>
         </form>
       </SlideCard>
     );
