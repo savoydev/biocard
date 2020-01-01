@@ -1,24 +1,9 @@
 import React from "react";
-import styled, { keyframes } from "styled-components";
-import BasicCard from "./BasicCard";
+import styled from "styled-components";
 import COLORS from "../../constants/Colors";
-import { slideInUp } from "react-animations";
 import CARD_STYLES from "../../constants/CardStyles";
 import SlideCard from "./SlideCard";
-
-const slideInUpAnimation = keyframes`${slideInUp}`;
-
-const ColorSelectionStyled = styled(BasicCard)`
-  position: fixed;
-  bottom: 0;
-  margin: 0;
-  left: 0;
-  right: 0;
-  background: #fff;
-  animation: 0.5s ${slideInUpAnimation};
-  z-index: 3;
-  box-shadow: ${props => props.cardStyle.CARD_TOP_SHADOW};
-`;
+import Button from "../Common/Button";
 
 const PalleteColor = styled.button`
   width: 20%;
@@ -31,37 +16,6 @@ const PalleteColor = styled.button`
   border-radius: ${props => props.cardStyle.BORDER_RADIUS};
 `;
 
-const ColorSelectionHeader = styled.div`
-  font-family: "Heebo";
-  font-size: 2rem;
-  text-align: left;
-  margin-bottom: 10px;
-`;
-
-const Button = styled.button`
-  background: ${props => props.color.DEFAULT_GRADIENT};
-  color: ${COLORS.EGGSHELL};
-  font-family: "Open Sans";
-  font-weight: bold;
-  border: none;
-  font-size: 1.25rem;
-  line-height: 2.5rem;
-  border-radius: ${props => props.cardStyle.BTN_BORDER_RADIUS};
-  margin: 0 auto;
-  display: block;
-  min-width: 100px;
-  padding: 10px 30px;
-  margin: 20px 0 40px 0;
-  cursor: pointer;
-  box-shadow: ${props => props.cardStyle.BTN_SHADOW};
-  transition: all 0.3s;
-  :hover {
-    transform: scale(1.025);
-    transition: all 0.3s;
-    box-shadow: 0px 5px 15px rgba(130, 130, 130, 0.25);
-  }
-`;
-
 const CardStyleExample = styled.button`
   border-radius: ${props => props.cardStyle.BORDER_RADIUS};
   box-shadow: ${props => props.cardStyle.CARD_SHADOW};
@@ -70,6 +24,10 @@ const CardStyleExample = styled.button`
   width: 40%;
   height: 150px;
   margin-right: 20px;
+`;
+
+const StyledButton = styled(Button)`
+  margin: 40px 0;
 `;
 
 const getAllCardStyles = props => {
@@ -130,14 +88,14 @@ const ThemeSelectionCard = props => {
         Select a card style
       </SlideCard.Header>
       {allCardStyles}
-      <Button
+      <StyledButton
         type="button"
         color={props.color}
         cardStyle={props.cardStyle}
         onClick={props.themeSelectionDone}
       >
         Finished
-      </Button>
+      </StyledButton>
     </SlideCard>
   );
 };
