@@ -6,6 +6,7 @@ import VideoCard from "./Cards/VideoCard";
 import CreateLinkCard from "../components/Cards/CreateLinkCard";
 import ThemeSelectionCard from "../components/Cards/ThemeSelectionCard";
 import Button from "../components/Common/Button";
+import EditCardLink from "./Cards/EditLinkCard";
 
 const mockLinks = require("../data/Links.json");
 const mockUsers = require("../data/UserInfo.json");
@@ -17,8 +18,11 @@ class LinksContainer extends React.Component {
     this.state = {
       ShowThemeSelection: false,
       ShowLinkCreation: false,
+      ShowEditLink: false,
+      editMode: false,
       user: null,
-      Links: []
+      Links: [],
+      activeEditLink: null
     };
   }
 
@@ -65,6 +69,7 @@ class LinksContainer extends React.Component {
   };
 
   renderLinkTypes = () => {
+    let edit = this.state.editMode;
     let links = this.state.Links;
     let linkComponents = [];
     if (links.length) {
@@ -72,13 +77,11 @@ class LinksContainer extends React.Component {
         if (links[i].ImageURL.length) {
           linkComponents.push(
             <ImageCard
-              image={links[i].ImageURL}
-              link={links[i].Link}
-              title={links[i].Title}
-              description={links[i].Description}
-              color={this.state.Color}
-              cardStyle={this.state.CardStyle}
+              thisLink={links[i]}
               key={i}
+              as={edit ? "div" : "a"}
+              edit={edit}
+              showEditLink={edit ? this.showEditLink : null}
             />
           );
         } else if (links[i].Link.includes("youtube")) {
@@ -100,6 +103,7 @@ class LinksContainer extends React.Component {
               color={this.state.Color}
               cardStyle={this.state.CardStyle}
               key={i}
+              as={edit ? "div" : "a"}
             />
           );
         }
@@ -123,6 +127,25 @@ class LinksContainer extends React.Component {
     });
   };
 
+  linkCreationDone = () => {
+    this.setState({
+      ShowLinkCreation: false
+    });
+  };
+
+  showEditLink = link => {
+    this.setState({
+      ShowEditLink: true,
+      activeEditLink: link
+    });
+  };
+
+  linkEditDone = () => {
+    this.setState({
+      ShowEditLink: false
+    });
+  };
+
   showColorSelection = () => {
     this.setState(
       {
@@ -140,12 +163,27 @@ class LinksContainer extends React.Component {
     });
   };
 
+  toggleEditMode = () => {
+    const editMode = this.state.editMode;
+    this.setState(
+      {
+        editMode: !editMode
+      },
+      () => {
+        this.renderLinkTypes();
+      }
+    );
+  };
+
   render() {
     const renderLinks = this.renderLinkTypes();
     return (
       <React.Fragment>
         {this.state.user && <UserCard user={this.state.user} />}
         {renderLinks}
+        <Button type="button" onClick={this.toggleEditMode}>
+          Edit links
+        </Button>
         <Button type="button" onClick={this.showLinkCreation}>
           Create new link
         </Button>
@@ -166,6 +204,13 @@ class LinksContainer extends React.Component {
           updateCardStyle={this.updateCardStyle}
           updateColor={this.updateColor}
         />
+        {this.state.activeEditLink && (
+          <EditCardLink
+            link={this.state.activeEditLink}
+            show={this.state.ShowEditLink}
+            linkEditDone={this.linkEditDone}
+          />
+        )}
       </React.Fragment>
     );
   }

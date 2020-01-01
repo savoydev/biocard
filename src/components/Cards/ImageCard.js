@@ -8,6 +8,7 @@ const StyledImageCard = styled(StyledBasicCard)`
   background-size: cover;
   background-position: center;
   min-height: 200px;
+  cursor: pointer;
 `;
 
 const StyledImageCardText = styled.div`
@@ -32,20 +33,30 @@ const StyledImageCardTitle = styled.div`
 `;
 
 export class ImageCard extends React.Component {
+  editCard = () => {
+    this.props.showEditLink(this.props.thisLink);
+  };
+
   render() {
     return (
       <StyledImageCard
-        bgImage={this.props.image}
+        showEditLink={this.props.edit ? this.editCard : null}
+        onClick={this.props.edit ? this.editCard : null}
+        as={this.props.as}
+        bgImage={this.props.thisLink.ImageURL}
         href={
-          this.props.link.includes("https") || this.props.link.includes("http")
-            ? this.props.link
-            : `https://${this.props.link}`
+          this.props.thisLink.Link.includes("https") ||
+          this.props.thisLink.Link.includes("http")
+            ? this.props.thisLink.Link
+            : `https://${this.props.thisLink.Link}`
         }
         target="_blank"
       >
-        {this.props.title && (
+        {this.props.thisLink.Title && (
           <StyledImageCardText>
-            <StyledImageCardTitle>{this.props.title}</StyledImageCardTitle>
+            <StyledImageCardTitle>
+              {this.props.thisLink.Title}
+            </StyledImageCardTitle>
           </StyledImageCardText>
         )}
       </StyledImageCard>

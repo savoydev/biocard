@@ -20,7 +20,7 @@ const StyledMediaVideoCard = styled(StyledBasicCard)`
 
 const VideoCard = props => {
   return (
-    <StyledMediaVideoCard as="div">
+    <StyledMediaVideoCard as={props.as}>
       <iframe
         title={props.title}
         height="315"

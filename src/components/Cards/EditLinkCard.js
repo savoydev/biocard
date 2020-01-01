@@ -1,7 +1,7 @@
-import React, { Component } from "react";
-import styled from "styled-components";
+import React from "react";
 import Button from "../Common/Button";
-import SlideCard from "./SlideCard";
+import SlideCard from "../Cards/SlideCard";
+import styled from "styled-components";
 
 const InputWrapper = styled.div`
   margin-bottom: 20px;
@@ -37,7 +37,7 @@ const StyledButton = styled(Button)`
   margin: 40px 0 60px 0;
 `;
 
-class CreateLinkCard extends Component {
+class EditCardLink extends React.Component {
   constructor(props) {
     super(props);
 
@@ -48,11 +48,6 @@ class CreateLinkCard extends Component {
       Description: ""
     };
   }
-
-  submitLink = event => {
-    event.preventDefault();
-    this.addLink();
-  };
 
   addLink = () => {
     let newLink = {
@@ -70,30 +65,42 @@ class CreateLinkCard extends Component {
     });
   };
 
+  submitLink = event => {
+    event.preventDefault();
+    this.addLink();
+  };
+
   onChange = e => {
     this.setState({ [e.target.name]: e.target.value });
   };
 
   render() {
-    const { Title, Link, ImageURL, Description } = this.state;
     return (
       <SlideCard show={this.props.show}>
-        <SlideCard.Header>Create a new link</SlideCard.Header>
+        <SlideCard.Header>Edit link</SlideCard.Header>
         <form onSubmit={this.submitLink}>
           <InputWrapper>
             <InputLabel htmlFor="Title">Title</InputLabel>
-            <InputField name="Title" onChange={this.onChange} value={Title} />
+            <InputField
+              name="Title"
+              onChange={this.onChange}
+              value={this.props.link.Title}
+            />
           </InputWrapper>
           <InputWrapper>
             <InputLabel htmlFor="Link">Link</InputLabel>
-            <InputField name="Link" onChange={this.onChange} value={Link} />
+            <InputField
+              name="Link"
+              onChange={this.onChange}
+              value={this.props.link.Link}
+            />
           </InputWrapper>
           <InputWrapper>
             <InputLabel htmlFor="ImageURL">Image URL</InputLabel>
             <InputField
               name="ImageURL"
               onChange={this.onChange}
-              value={ImageURL}
+              value={this.props.link.ImageURL}
             />
           </InputWrapper>
           <InputWrapper>
@@ -101,14 +108,17 @@ class CreateLinkCard extends Component {
             <InputField
               name="Description"
               onChange={this.onChange}
-              value={Description}
+              value={this.props.link.Description}
             />
           </InputWrapper>
-          <StyledButton type="Submit">Add Link</StyledButton>
+          <StyledButton type="Submit">Save</StyledButton>
         </form>
+        <StyledButton type="button" onClick={this.props.linkEditDone}>
+          Cancel
+        </StyledButton>
       </SlideCard>
     );
   }
 }
 
-export default CreateLinkCard;
+export default EditCardLink;

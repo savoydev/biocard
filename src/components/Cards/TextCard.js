@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import COLORS from "../../constants/Colors";
-import BasicCard from "./BasicCard";
+import { StyledBasicCard } from "./BasicCard";
 
-const StyledTextCard = styled(BasicCard)`
+const StyledTextCard = styled(StyledBasicCard)`
   background: ${props => props.theme.color.DEFAULT_GRADIENT};
 `;
 
@@ -26,6 +26,7 @@ const MediaCardDescription = styled.div`
 const TextCard = props => {
   return (
     <StyledTextCard
+      as={props.as}
       href={
         props.link.includes("https") || props.link.includes("http")
           ? props.link
