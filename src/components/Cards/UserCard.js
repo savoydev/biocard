@@ -56,9 +56,9 @@ const UserImage = styled.div`
 const UserCard = props => {
   return (
     <StyledUserCard cardStyle={props.cardStyle} as="div">
-      {props.image && (
+      {props.user.image && (
         <UserImage
-          image={props.image}
+          image={props.user.image}
           color={props.color}
           cardStyle={props.cardStyle}
         >
@@ -66,9 +66,9 @@ const UserCard = props => {
         </UserImage>
       )}
       <UserText>
-        <UserName color={props.color}>{props.name}</UserName>
+        <UserName color={props.color}>{props.user.name}</UserName>
         <UserDescription color={props.color}>
-          {props.description}
+          {props.user.description}
         </UserDescription>
       </UserText>
     </StyledUserCard>

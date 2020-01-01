@@ -3,53 +3,38 @@ import UserCard from "./Cards/UserCard";
 import ImageCard from "./Cards/ImageCard";
 import TextCard from "./Cards/TextCard";
 import VideoCard from "./Cards/VideoCard";
-import CreateLinkCard from "./CreateLink";
+import CreateLinkCard from "../components/Cards/CreateLinkCard";
 import COLORS from "../constants/Colors";
-import styled from "styled-components";
 import CARD_STYLES from "../constants/CardStyles";
-import ColorSelection from "./ColorSelection";
+import ThemeSelectionCard from "../components/Cards/ThemeSelectionCard";
+import Button from "../components/Common/Button";
 
 const mockLinks = require("../data/Links.json");
-
-const Button = styled.button`
-  background: ${props => props.color.DEFAULT_GRADIENT};
-  color: ${COLORS.EGGSHELL};
-  font-family: "Open Sans";
-  font-weight: bold;
-  border: none;
-  font-size: 1.25rem;
-  line-height: 2.5rem;
-  border-radius: ${props => props.cardStyle.BTN_BORDER_RADIUS};
-  margin: 0 auto;
-  display: block;
-  min-width: 100px;
-  padding: 10px 30px;
-  margin-bottom: 20px;
-  cursor: pointer;
-  box-shadow: ${props => props.cardStyle.BTN_SHADOW};
-  transition: all 0.3s;
-  :hover {
-    transform: scale(1.025);
-    transition: all 0.3s;
-    box-shadow: 0px 5px 15px rgba(130, 130, 130, 0.25);
-  }
-`;
+const mockUsers = require("../data/UserInfo.json");
 
 class LinksContainer extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      ShowColorSelection: false,
+      ShowThemeSelection: false,
       ShowLinkCreation: false,
       Color: COLORS.IVORY_BLACK,
       CardStyle: CARD_STYLES.ROUND,
+      user: null,
       Links: []
     };
   }
 
   componentDidMount() {
+    this.getUser();
     this.getLinks();
+  }
+
+  async getUser() {
+    this.setState({
+      user: mockUsers
+    });
   }
 
   async getLinks() {
@@ -142,14 +127,14 @@ class LinksContainer extends React.Component {
 
   themeSelectionDone = () => {
     this.setState({
-      ShowColorSelection: false
+      ShowThemeSelection: false
     });
   };
 
   showColorSelection = () => {
     this.setState(
       {
-        ShowColorSelection: true
+        ShowThemeSelection: true
       },
       () => {
         window.scrollTo({ top: 0, behavior: "smooth" });
@@ -167,13 +152,13 @@ class LinksContainer extends React.Component {
     const renderLinks = this.renderLinkTypes();
     return (
       <React.Fragment>
-        <UserCard
-          image="https://i1.sndcdn.com/avatars-000378232415-umh2jq-t500x500.jpg"
-          name="Artist Name Here"
-          description="Artist bio can go here"
-          color={this.state.Color}
-          cardStyle={this.state.CardStyle}
-        />
+        {this.state.user && (
+          <UserCard
+            user={this.state.user}
+            color={this.state.Color}
+            cardStyle={this.state.CardStyle}
+          />
+        )}
         {renderLinks}
         <Button
           type="button"
@@ -191,22 +176,20 @@ class LinksContainer extends React.Component {
         >
           Change theme
         </Button>
-        {this.state.ShowLinkCreation && (
-          <CreateLinkCard
-            color={this.state.Color}
-            cardStyle={this.state.CardStyle}
-            addLink={this.addLink}
-          />
-        )}
-        {this.state.ShowColorSelection && (
-          <ColorSelection
-            color={this.state.Color}
-            cardStyle={this.state.CardStyle}
-            themeSelectionDone={this.themeSelectionDone}
-            updateCardStyle={this.updateCardStyle}
-            updateColor={this.updateColor}
-          />
-        )}
+        <CreateLinkCard
+          show={this.state.ShowLinkCreation}
+          color={this.state.Color}
+          cardStyle={this.state.CardStyle}
+          addLink={this.addLink}
+        />
+        <ThemeSelectionCard
+          show={this.state.ShowThemeSelection}
+          color={this.state.Color}
+          cardStyle={this.state.CardStyle}
+          themeSelectionDone={this.themeSelectionDone}
+          updateCardStyle={this.updateCardStyle}
+          updateColor={this.updateColor}
+        />
       </React.Fragment>
     );
   }

@@ -1,9 +1,10 @@
-import React, { Component } from "react";
+import React from "react";
 import styled, { keyframes } from "styled-components";
-import BasicCard from "./Cards/BasicCard";
-import COLORS from "../constants/Colors";
+import BasicCard from "./BasicCard";
+import COLORS from "../../constants/Colors";
 import { slideInUp } from "react-animations";
-import CARD_STYLES from "../constants/CardStyles";
+import CARD_STYLES from "../../constants/CardStyles";
+import SlideCard from "./SlideCard";
 
 const slideInUpAnimation = keyframes`${slideInUp}`;
 
@@ -112,18 +113,22 @@ const getAllColors = props => {
   return colors;
 };
 
-const ColorSelection = props => {
+const ThemeSelectionCard = props => {
   const allColors = getAllColors(props);
   const allCardStyles = getAllCardStyles(props);
   return (
-    <ColorSelectionStyled color={props.color} cardStyle={props.cardStyle}>
-      <ColorSelectionHeader color={props.color}>
+    <SlideCard
+      color={props.color}
+      cardStyle={props.cardStyle}
+      show={props.show}
+    >
+      <SlideCard.Header color={props.color}>
         Select a theme color
-      </ColorSelectionHeader>
+      </SlideCard.Header>
       {allColors}
-      <ColorSelectionHeader color={props.color}>
+      <SlideCard.Header color={props.color}>
         Select a card style
-      </ColorSelectionHeader>
+      </SlideCard.Header>
       {allCardStyles}
       <Button
         type="button"
@@ -133,8 +138,8 @@ const ColorSelection = props => {
       >
         Finished
       </Button>
-    </ColorSelectionStyled>
+    </SlideCard>
   );
 };
 
-export default ColorSelection;
+export default ThemeSelectionCard;
