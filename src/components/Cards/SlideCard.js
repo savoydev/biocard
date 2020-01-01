@@ -26,7 +26,7 @@ export const StyledSlideCard = styled(StyledBasicCard)`
   left: 0;
   right: 0;
   z-index: 3;
-  box-shadow: ${props => props.cardStyle.CARD_TOP_SHADOW};
+  box-shadow: ${props => props.theme.cardStyle.CARD_TOP_SHADOW};
 `;
 
 const SlideCard = props => {

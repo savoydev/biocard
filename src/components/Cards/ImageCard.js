@@ -19,7 +19,7 @@ const StyledImageCardText = styled.div`
   padding: 20px;
   text-align: center;
   font-size: 2rem;
-  background: ${props => props.color.BACKGROUND_GRADIENT};
+  background: ${props => props.theme.color.BACKGROUND_GRADIENT};
 `;
 
 const StyledImageCardTitle = styled.div`
@@ -35,9 +35,7 @@ export class ImageCard extends React.Component {
   render() {
     return (
       <StyledImageCard
-        color={this.props.color}
         bgImage={this.props.image}
-        cardStyle={this.props.cardStyle}
         href={
           this.props.link.includes("https") || this.props.link.includes("http")
             ? this.props.link
@@ -46,7 +44,7 @@ export class ImageCard extends React.Component {
         target="_blank"
       >
         {this.props.title && (
-          <StyledImageCardText color={this.props.color}>
+          <StyledImageCardText>
             <StyledImageCardTitle>{this.props.title}</StyledImageCardTitle>
           </StyledImageCardText>
         )}

@@ -136,7 +136,7 @@ function hexToRgbA(hex, alpha = "1") {
 function gradient(color) {
   return `linear-gradient(45deg, ${color.RGBA(color.BASE)} 0%, ${color.RGBA(
     color.LIGHT
-  )} 50%, ${color.RGBA(color.LIGHTEST)} 100%);`;
+  )} 60%, ${color.RGBA(color.LIGHTEST)} 100%);`;
 }
 
 function bgGradient(color) {

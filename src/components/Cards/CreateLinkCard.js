@@ -9,7 +9,7 @@ const InputWrapper = styled.div`
 
 const InputLabel = styled.label`
   margin-right: 10px;
-  color: ${props => props.color.BASE};
+  color: ${props => props.theme.color.BASE};
   font-family: "Heebo";
   font-size: 1.25rem;
   line-height: 1.25rem;
@@ -20,8 +20,8 @@ const InputLabel = styled.label`
 const InputField = styled.input.attrs(props => ({
   type: "text"
 }))`
-  border: 2px solid ${props => props.color.LIGHT};
-  border-radius: ${props => props.cardStyle.BORDER_RADIUS};
+  border: 2px solid ${props => props.theme.color.LIGHT};
+  border-radius: ${props => props.theme.cardStyle.BORDER_RADIUS};
   height: 50px;
   position: relaitve;
   top: -3px;
@@ -30,7 +30,7 @@ const InputField = styled.input.attrs(props => ({
   font-size: 1.25rem;
   padding-left: 8px;
   box-sizing: border-box;
-  color: ${props => props.color.BASE};
+  color: ${props => props.theme.color.BASE};
 `;
 
 const StyledButton = styled(Button)`
@@ -86,36 +86,20 @@ class CreateLinkCard extends Component {
   render() {
     const { Title, Link, ImageURL, Description } = this.state;
     return (
-      <SlideCard
-        color={this.props.color}
-        cardStyle={this.props.cardStyle}
-        show={this.props.show}
-      >
+      <SlideCard show={this.props.show}>
         <SlideCard.Header>Create a new link</SlideCard.Header>
         <form onSubmit={this.submitLink}>
           <InputWrapper>
             <InputLabel htmlFor="Title" color={this.props.color}>
               Title
             </InputLabel>
-            <InputField
-              name="Title"
-              color={this.props.color}
-              onChange={this.onChange}
-              value={Title}
-              cardStyle={this.props.cardStyle}
-            />
+            <InputField name="Title" onChange={this.onChange} value={Title} />
           </InputWrapper>
           <InputWrapper>
             <InputLabel htmlFor="Link" color={this.props.color}>
               Link
             </InputLabel>
-            <InputField
-              name="Link"
-              color={this.props.color}
-              onChange={this.onChange}
-              value={Link}
-              cardStyle={this.props.cardStyle}
-            />
+            <InputField name="Link" onChange={this.onChange} value={Link} />
           </InputWrapper>
           <InputWrapper>
             <InputLabel htmlFor="ImageURL" color={this.props.color}>
@@ -123,10 +107,8 @@ class CreateLinkCard extends Component {
             </InputLabel>
             <InputField
               name="ImageURL"
-              color={this.props.color}
               onChange={this.onChange}
               value={ImageURL}
-              cardStyle={this.props.cardStyle}
             />
           </InputWrapper>
           <InputWrapper>
@@ -135,19 +117,11 @@ class CreateLinkCard extends Component {
             </InputLabel>
             <InputField
               name="Description"
-              color={this.props.color}
               onChange={this.onChange}
               value={Description}
-              cardStyle={this.props.cardStyle}
             />
           </InputWrapper>
-          <StyledButton
-            type="Submit"
-            color={this.props.color}
-            cardStyle={this.props.cardStyle}
-          >
-            Add Link
-          </StyledButton>
+          <StyledButton type="Submit">Add Link</StyledButton>
         </form>
       </SlideCard>
     );

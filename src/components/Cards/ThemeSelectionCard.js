@@ -13,7 +13,7 @@ const PalleteColor = styled.button`
   margin: 0 10px 20px 0;
   border: none;
   transition: all 0.3s;
-  border-radius: ${props => props.cardStyle.BORDER_RADIUS};
+  border-radius: ${props => props.theme.cardStyle.BORDER_RADIUS};
 `;
 
 const CardStyleExample = styled.button`
@@ -75,25 +75,12 @@ const ThemeSelectionCard = props => {
   const allColors = getAllColors(props);
   const allCardStyles = getAllCardStyles(props);
   return (
-    <SlideCard
-      color={props.color}
-      cardStyle={props.cardStyle}
-      show={props.show}
-    >
-      <SlideCard.Header color={props.color}>
-        Select a theme color
-      </SlideCard.Header>
+    <SlideCard show={props.show}>
+      <SlideCard.Header>Select a theme color</SlideCard.Header>
       {allColors}
-      <SlideCard.Header color={props.color}>
-        Select a card style
-      </SlideCard.Header>
+      <SlideCard.Header>Select a card style</SlideCard.Header>
       {allCardStyles}
-      <StyledButton
-        type="button"
-        color={props.color}
-        cardStyle={props.cardStyle}
-        onClick={props.themeSelectionDone}
-      >
+      <StyledButton type="button" onClick={props.themeSelectionDone}>
         Finished
       </StyledButton>
     </SlideCard>

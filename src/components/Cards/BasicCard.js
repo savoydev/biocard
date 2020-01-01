@@ -5,8 +5,8 @@ import { fadeIn } from "react-animations";
 const fadeAnimation = keyframes`${fadeIn}`;
 
 export const StyledBasicCard = styled.a`
-  border-radius: ${props => props.cardStyle.BORDER_RADIUS};
-  box-shadow: ${props => props.cardStyle.CARD_SHADOW};
+  border-radius: ${props => props.theme.cardStyle.BORDER_RADIUS};
+  box-shadow: ${props => props.theme.cardStyle.CARD_SHADOW};
   padding: 20px;
   overflow: hidden;
   margin-bottom: 20px;

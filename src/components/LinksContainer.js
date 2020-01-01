@@ -4,8 +4,6 @@ import ImageCard from "./Cards/ImageCard";
 import TextCard from "./Cards/TextCard";
 import VideoCard from "./Cards/VideoCard";
 import CreateLinkCard from "../components/Cards/CreateLinkCard";
-import COLORS from "../constants/Colors";
-import CARD_STYLES from "../constants/CardStyles";
 import ThemeSelectionCard from "../components/Cards/ThemeSelectionCard";
 import Button from "../components/Common/Button";
 
@@ -19,8 +17,6 @@ class LinksContainer extends React.Component {
     this.state = {
       ShowThemeSelection: false,
       ShowLinkCreation: false,
-      Color: COLORS.IVORY_BLACK,
-      CardStyle: CARD_STYLES.ROUND,
       user: null,
       Links: []
     };
@@ -114,15 +110,11 @@ class LinksContainer extends React.Component {
   };
 
   updateColor = color => {
-    this.setState({
-      Color: color
-    });
+    this.props.updateColor(color);
   };
 
   updateCardStyle = cardStyle => {
-    this.setState({
-      CardStyle: cardStyle
-    });
+    this.props.updateCardStyle(cardStyle);
   };
 
   themeSelectionDone = () => {
@@ -152,28 +144,12 @@ class LinksContainer extends React.Component {
     const renderLinks = this.renderLinkTypes();
     return (
       <React.Fragment>
-        {this.state.user && (
-          <UserCard
-            user={this.state.user}
-            color={this.state.Color}
-            cardStyle={this.state.CardStyle}
-          />
-        )}
+        {this.state.user && <UserCard user={this.state.user} />}
         {renderLinks}
-        <Button
-          type="button"
-          color={this.state.Color}
-          onClick={this.showLinkCreation}
-          cardStyle={this.state.CardStyle}
-        >
+        <Button type="button" onClick={this.showLinkCreation}>
           Create new link
         </Button>
-        <Button
-          type="button"
-          color={this.state.Color}
-          cardStyle={this.state.CardStyle}
-          onClick={this.showColorSelection}
-        >
+        <Button type="button" onClick={this.showColorSelection}>
           Change theme
         </Button>
         <CreateLinkCard
