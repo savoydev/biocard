@@ -8,7 +8,7 @@ import SocialMediaCard from "./SocialMediaCard";
 
 const StyledAppContainer = styled.div`
   background-color: ${props =>
-    props.theme.color.RGBA(props.theme.color.LIGHTEST, "0.05")};
+    props.theme.color.RGBA(props.theme.color.LIGHTEST, "0.1")};
   padding: 16px;
   height: 100%;
 
@@ -24,7 +24,7 @@ class AppContainer extends React.Component {
 
     this.state = {
       theme: {
-        color: COLORS.WARM_PEACH,
+        color: COLORS.IVORY_BLACK,
         cardStyle: CARD_STYLES.ROUND
       }
     };
