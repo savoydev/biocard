@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import BasicCard from "./BasicCard";
+import BasicCard from "./Cards/BasicCard";
 import styled, { keyframes } from "styled-components";
 import COLORS from "../constants/Colors";
 import { slideInUp } from "react-animations";
@@ -38,13 +38,16 @@ const InputLabel = styled.label`
   margin-bottom: 10px;
 `;
 
-const InputField = styled.input`
+const InputField = styled.input.attrs(props => ({
+  type: "text"
+}))`
   border: 2px solid ${props => props.color.LIGHT};
   border-radius: ${props => props.cardStyle.BORDER_RADIUS};
   height: 50px;
   position: relaitve;
   top: -3px;
   width: 100%;
+  box-shadow: none;
   font-size: 1.25rem;
   padding-left: 8px;
   box-sizing: border-box;
@@ -124,86 +127,69 @@ class CreateLinkCard extends Component {
   render() {
     const { Title, Link, ImageURL, Description } = this.state;
     return (
-      <React.Fragment>
-        {this.state.showCreateCard && (
-          <CreateLinkCardStyled
+      <CreateLinkCardStyled
+        color={this.props.color}
+        cardStyle={this.props.cardStyle}
+      >
+        <CreateLinkHeader>Create a new link</CreateLinkHeader>
+        <form onSubmit={this.submitLink}>
+          <InputWrapper>
+            <InputLabel htmlFor="Title" color={this.props.color}>
+              Title
+            </InputLabel>
+            <InputField
+              name="Title"
+              color={this.props.color}
+              onChange={this.onChange}
+              value={Title}
+              cardStyle={this.props.cardStyle}
+            />
+          </InputWrapper>
+          <InputWrapper>
+            <InputLabel htmlFor="Link" color={this.props.color}>
+              Link
+            </InputLabel>
+            <InputField
+              name="Link"
+              color={this.props.color}
+              onChange={this.onChange}
+              value={Link}
+              cardStyle={this.props.cardStyle}
+            />
+          </InputWrapper>
+          <InputWrapper>
+            <InputLabel htmlFor="ImageURL" color={this.props.color}>
+              Image URL
+            </InputLabel>
+            <InputField
+              name="ImageURL"
+              color={this.props.color}
+              onChange={this.onChange}
+              value={ImageURL}
+              cardStyle={this.props.cardStyle}
+            />
+          </InputWrapper>
+          <InputWrapper>
+            <InputLabel htmlFor="Description" color={this.props.color}>
+              Description
+            </InputLabel>
+            <InputField
+              name="Description"
+              color={this.props.color}
+              onChange={this.onChange}
+              value={Description}
+              cardStyle={this.props.cardStyle}
+            />
+          </InputWrapper>
+          <Button
+            type="Submit"
             color={this.props.color}
             cardStyle={this.props.cardStyle}
           >
-            <CreateLinkHeader>Create a new link</CreateLinkHeader>
-            <form onSubmit={this.submitLink}>
-              <InputWrapper>
-                <InputLabel htmlFor="Title" color={this.props.color}>
-                  Title
-                </InputLabel>
-                <InputField
-                  type="text"
-                  name="Title"
-                  color={this.props.color}
-                  onChange={this.onChange}
-                  value={Title}
-                  cardStyle={this.props.cardStyle}
-                />
-              </InputWrapper>
-              <InputWrapper>
-                <InputLabel htmlFor="Link" color={this.props.color}>
-                  Link
-                </InputLabel>
-                <InputField
-                  type="text"
-                  name="Link"
-                  color={this.props.color}
-                  onChange={this.onChange}
-                  value={Link}
-                  cardStyle={this.props.cardStyle}
-                />
-              </InputWrapper>
-              <InputWrapper>
-                <InputLabel htmlFor="ImageURL" color={this.props.color}>
-                  Image URL
-                </InputLabel>
-                <InputField
-                  type="text"
-                  name="ImageURL"
-                  color={this.props.color}
-                  onChange={this.onChange}
-                  value={ImageURL}
-                  cardStyle={this.props.cardStyle}
-                />
-              </InputWrapper>
-              <InputWrapper>
-                <InputLabel htmlFor="Description" color={this.props.color}>
-                  Description
-                </InputLabel>
-                <InputField
-                  type="text"
-                  name="Description"
-                  color={this.props.color}
-                  onChange={this.onChange}
-                  value={Description}
-                  cardStyle={this.props.cardStyle}
-                />
-              </InputWrapper>
-              <Button
-                type="Submit"
-                color={this.props.color}
-                cardStyle={this.props.cardStyle}
-              >
-                Add Link
-              </Button>
-            </form>
-          </CreateLinkCardStyled>
-        )}
-        <Button
-          type="button"
-          color={this.props.color}
-          onClick={this.showCreateCard}
-          disabled={this.state.showCreateCard}
-          cardStyle={this.props.cardStyle}
-        >
-          Create new link
-        </Button>
-      </React.Fragment>
+            Add Link
+          </Button>
+        </form>
+      </CreateLinkCardStyled>
     );
   }
 }

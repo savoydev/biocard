@@ -3,6 +3,7 @@ import fbLogo from "../img/fb.png";
 import spotLogo from "../img/spot.png";
 import twLogo from "../img/tw.png";
 import scLogo from "../img/sc.png";
+import instaLogo from "../img/insta.png";
 
 export const SITES = {
   YOUTUBE: {
@@ -24,6 +25,10 @@ export const SITES = {
   SOUNDCLOUD: {
     TITLE: "SoundCloud",
     LOGO: scLogo
+  },
+  INSTAGRAM: {
+    TITLE: "Instagram",
+    LOGO: instaLogo
   }
 };
 

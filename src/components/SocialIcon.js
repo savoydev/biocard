@@ -1,7 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import SITES from "../constants/Social";
-import socialSites from "../data/Social";
 
 const StyledSocialIcon = styled.a`
   border-radius: 100%;

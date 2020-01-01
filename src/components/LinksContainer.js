@@ -1,12 +1,15 @@
 import React from "react";
-import UserCard from "./UserCard";
-import MediaCard from "./MediaCard";
-import TextCard from "./TextCard";
+import UserCard from "./Cards/UserCard";
+import ImageCard from "./Cards/ImageCard";
+import TextCard from "./Cards/TextCard";
+import VideoCard from "./Cards/VideoCard";
 import CreateLinkCard from "./CreateLink";
 import COLORS from "../constants/Colors";
 import styled from "styled-components";
 import CARD_STYLES from "../constants/CardStyles";
 import ColorSelection from "./ColorSelection";
+
+const mockLinks = require("../data/Links.json");
 
 const Button = styled.button`
   background: ${props => props.color.DEFAULT_GRADIENT};
@@ -38,43 +41,45 @@ class LinksContainer extends React.Component {
 
     this.state = {
       ShowColorSelection: false,
+      ShowLinkCreation: false,
       Color: COLORS.IVORY_BLACK,
       CardStyle: CARD_STYLES.ROUND,
-      Links: [
-        {
-          ImageURL:
-            "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi.ytimg.com%2Fvi%2FBHsq0b7HxFc%2Fmaxresdefault.jpg&f=1&nofb=1",
-          Link:
-            "https://open.spotify.com/album/0MOImG9dhPplgcVsrOveK5?si=7hR53EyvQXGm0FXJpJJu0A",
-          Title: "Mixed Feelings",
-          Description: "New single"
-        },
-        {
-          ImageURL: "",
-          Link:
-            "https://open.spotify.com/album/0MOImG9dhPplgcVsrOveK5?si=7hR53EyvQXGm0FXJpJJu0A",
-          Title: "Mixed Feelings",
-          Description: "Check out my lastest release"
-        },
-        {
-          ImageURL: "",
-          Link: "https://www.youtube.com/embed/VxWlL1Phh70",
-          Title: "Mixed Feelings",
-          Description: "Check out my lastest release"
-        },
-        {
-          ImageURL: "",
-          Link: "https://www.youtube.com/watch?v=0FtJMvnHjU4",
-          Title: "Mixed Feelings",
-          Description: "Check out my lastest release"
-        }
-      ]
+      Links: []
     };
   }
 
+  componentDidMount() {
+    this.getLinks();
+  }
+
+  async getLinks() {
+    this.setState({
+      Links: mockLinks
+    });
+  }
+
+  getLinkType = () => {
+    let link = this.props.link;
+
+    if (link.includes("youtube")) {
+      return this.getYoutubeEmbedType();
+    }
+  };
+
+  getYoutubeEmbedType = link => {
+    let embedString = "";
+    if (link.includes("embed")) {
+      embedString = link.split("/embed/").pop();
+    } else if (link.includes("watch")) {
+      embedString = link.split("/watch?v=").pop();
+    }
+    return embedString;
+  };
+
   addLink = link => {
     this.setState({
-      Links: this.state.Links.concat(link)
+      Links: this.state.Links.concat(link),
+      ShowLinkCreation: false
     });
   };
 
@@ -83,13 +88,23 @@ class LinksContainer extends React.Component {
     let linkComponents = [];
     if (links.length) {
       for (let i = 0; i < links.length; i++) {
-        if (links[i].ImageURL.length || links[i].Link.includes("youtube")) {
+        if (links[i].ImageURL.length) {
           linkComponents.push(
-            <MediaCard
+            <ImageCard
               image={links[i].ImageURL}
               link={links[i].Link}
               title={links[i].Title}
               description={links[i].Description}
+              color={this.state.Color}
+              cardStyle={this.state.CardStyle}
+              key={i}
+            />
+          );
+        } else if (links[i].Link.includes("youtube")) {
+          linkComponents.push(
+            <VideoCard
+              title={links[i].Title}
+              embedString={this.getYoutubeEmbedType(links[i].Link)}
               color={this.state.Color}
               cardStyle={this.state.CardStyle}
               key={i}
@@ -142,6 +157,12 @@ class LinksContainer extends React.Component {
     );
   };
 
+  showLinkCreation = () => {
+    this.setState({
+      ShowLinkCreation: true
+    });
+  };
+
   render() {
     const renderLinks = this.renderLinkTypes();
     return (
@@ -154,11 +175,14 @@ class LinksContainer extends React.Component {
           cardStyle={this.state.CardStyle}
         />
         {renderLinks}
-        <CreateLinkCard
+        <Button
+          type="button"
           color={this.state.Color}
+          onClick={this.showLinkCreation}
           cardStyle={this.state.CardStyle}
-          addLink={this.addLink}
-        />
+        >
+          Create new link
+        </Button>
         <Button
           type="button"
           color={this.state.Color}
@@ -167,6 +191,13 @@ class LinksContainer extends React.Component {
         >
           Change theme
         </Button>
+        {this.state.ShowLinkCreation && (
+          <CreateLinkCard
+            color={this.state.Color}
+            cardStyle={this.state.CardStyle}
+            addLink={this.addLink}
+          />
+        )}
         {this.state.ShowColorSelection && (
           <ColorSelection
             color={this.state.Color}

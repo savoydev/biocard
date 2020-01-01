@@ -1,11 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import BasicCard from "./BasicCard";
-import CARD_STYLES from "../constants/CardStyles";
+import { StyledBasicCard } from "./BasicCard";
 
-const cardStyle = CARD_STYLES.ROUND;
-
-const StyledUserCard = styled(BasicCard)`
+const StyledUserCard = styled(StyledBasicCard)`
   min-height: 100px;
   box-shadow: none;
 
@@ -19,16 +16,18 @@ const UserText = styled.div`
   text-align: center;
 `;
 
-const UserName = styled.div`
+const UserName = styled.h1`
   font-size: 2rem;
   font-weight: bold;
   font-family: "Heebo";
+  margin: 0;
   color: ${props => props.color.BASE};
 `;
 
-const UserDescription = styled.div`
+const UserDescription = styled.p`
   color: ${props => props.color.BASE};
   font-size: 1rem;
+  margin: 0;
 `;
 
 const UserImage = styled.div`
@@ -56,7 +55,7 @@ const UserImage = styled.div`
 
 const UserCard = props => {
   return (
-    <StyledUserCard cardStyle={props.cardStyle}>
+    <StyledUserCard cardStyle={props.cardStyle} as="div">
       {props.image && (
         <UserImage
           image={props.image}

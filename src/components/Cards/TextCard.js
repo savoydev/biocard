@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import COLORS from "../constants/Colors";
+import COLORS from "../../constants/Colors";
 import BasicCard from "./BasicCard";
 
 const StyledTextCard = styled(BasicCard)`

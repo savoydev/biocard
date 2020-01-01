@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled, { keyframes } from "styled-components";
-import BasicCard from "./BasicCard";
+import BasicCard from "./Cards/BasicCard";
 import COLORS from "../constants/Colors";
 import { slideInUp } from "react-animations";
 import CARD_STYLES from "../constants/CardStyles";
@@ -79,6 +79,7 @@ const getAllCardStyles = props => {
         key={i}
         type="button"
         cardStyle={CARD_STYLES[key]}
+        selected={false}
         onClick={() => {
           props.updateCardStyle(CARD_STYLES[key]);
         }}
@@ -96,6 +97,7 @@ const getAllColors = props => {
       colors.push(
         <PalleteColor
           key={i}
+          selected={false}
           color={COLORS[key]}
           type="button"
           cardStyle={props.cardStyle}

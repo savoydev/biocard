@@ -20,6 +20,10 @@ export const socialSites = [
   {
     site: SITES.SPOTIFY,
     link: "https:///www.google.com"
+  },
+  {
+    site: SITES.INSTAGRAM,
+    link: "https:///www.google.com"
   }
 ];
 export default socialSites;

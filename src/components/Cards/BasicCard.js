@@ -4,7 +4,7 @@ import { fadeIn } from "react-animations";
 
 const fadeAnimation = keyframes`${fadeIn}`;
 
-const StyledBasicCard = styled.a`
+export const StyledBasicCard = styled.a`
   border-radius: ${props => props.cardStyle.BORDER_RADIUS};
   box-shadow: ${props => props.cardStyle.CARD_SHADOW};
   padding: 20px;
@@ -17,7 +17,7 @@ const StyledBasicCard = styled.a`
   animation: 2s ${fadeAnimation};
   transition: all 0.3s;
 
-  :hover {
+  &:hover {
     @media (min-width: 768px) {
       transform: scale(1.025);
       transition: all 0.3s;
