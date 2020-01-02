@@ -1,14 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 import COLORS from "../constants/Colors";
-import { ThemeProvider } from "styled-components";
+import { ThemeProvider, createGlobalStyle } from "styled-components";
 import CARD_STYLES from "../constants/CardStyles";
 import LinksContainer from "./LinksContainer";
 import SocialMediaCard from "./SocialMediaCard";
 
-const StyledAppContainer = styled.div`
-  background-color: ${props =>
+const GlobalStyle = createGlobalStyle`
+html {
+  background: ${props =>
     props.theme.color.RGBA(props.theme.color.LIGHTEST, "0.1")};
+}
+`
+
+const StyledAppContainer = styled.div`
   padding: 16px;
   height: 100%;
 
@@ -52,6 +57,7 @@ class AppContainer extends React.Component {
     return (
       <React.Fragment>
         <ThemeProvider theme={this.state.theme}>
+          <GlobalStyle />
           <StyledAppContainer>
             <LinksContainer
               updateColor={this.updateColor}
