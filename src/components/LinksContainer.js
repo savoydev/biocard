@@ -211,6 +211,12 @@ class LinksContainer extends React.Component {
     })
   }
 
+  closeAR = () => {
+    this.setState({
+      showAR: false
+    })
+  }
+
   render() {
     const renderLinks = this.renderLinkTypes();
     return (
@@ -219,7 +225,7 @@ class LinksContainer extends React.Component {
         {renderLinks}
         <Button type="button" onClick={this.showAR}>View in AR!</Button>
         {this.state.showAR &&
-        <ARViewer show={this.state.showAR} />        
+        <ARViewer show={this.state.showAR} closeAR={this.closeAR} />        
         }
         <StyledAdminBar>
         <Button type="button" secondary onClick={this.toggleEditMode}>
