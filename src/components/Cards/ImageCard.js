@@ -51,7 +51,7 @@ const StyledIconButton = styled.button`
   border-radius: ${props => props.theme.cardStyle.BORDER_RADIUS};
   margin-bottom: 10px;
   display: block;
-  pointer: cursor;
+  cursor: pointer;
 `;
 
 export class ImageCard extends React.Component {

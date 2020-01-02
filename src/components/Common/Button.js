@@ -19,13 +19,14 @@ const StyledButton = styled.button`
   padding: 10px 30px;
   margin-bottom: 20px;
   cursor: pointer;
+  text-align: center;
   box-shadow: ${props =>
     props.secondary ? "none;" : props.theme.cardStyle.BTN_SHADOW};
   transition: all 0.3s;
   &:hover {
     transform: scale(1.025);
     transition: all 0.3s;
-    box-shadow: 0px 5px 15px rgba(130, 130, 130, 0.25);
+    box-shadow: ${props => props.secondary ? "none;" : "0px 5px 15px rgba(130, 130, 130, 0.25)"};
   }
 `;
 
