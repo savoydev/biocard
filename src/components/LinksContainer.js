@@ -21,13 +21,16 @@ z-index: 2;
 bottom: -10px;
 padding: 10px 8px 20px 8px;
 text-align: center;
+display: flex;
+flex-direction: row;
+justify-content: space-around;
 border-radius: ${props => props.theme.cardStyle.BORDER_RADIUS};
 box-shadow: ${props => props.theme.cardStyle.CARD_TOP_SHADOW};
 
 button{
   margin: 0 6px;
   display: inline-block;
-  padding: 10px 7px;
+  padding: 10px 0;
   font-size: 1.15rem;
   min-width: 0;
   margin-bottom: 0;  svg {

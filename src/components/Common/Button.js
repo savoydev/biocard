@@ -24,7 +24,7 @@ const StyledButton = styled.button`
     props.secondary ? "none;" : props.theme.cardStyle.BTN_SHADOW};
   transition: all 0.3s;
   &:hover {
-    transform: scale(1.025);
+    transform: ${props => props.secondary ? "none;" : "scale(1.025)"};
     transition: all 0.3s;
     box-shadow: ${props => props.secondary ? "none;" : "0px 5px 15px rgba(130, 130, 130, 0.25)"};
   }
