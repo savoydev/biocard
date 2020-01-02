@@ -28,7 +28,7 @@ button{
   margin: 0 6px;
   display: inline-block;
   padding: 10px 7px;
-  font-size: .85rem;
+  font-size: 1rem;
   min-width: 0;
   margin-bottom: 0;  svg {
     position: relative;
