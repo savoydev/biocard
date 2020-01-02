@@ -8,7 +8,7 @@ const slideOutDownAnimation = keyframes`${slideOutDown}`;
 
 const StyledSlideCardHeader = styled.div`
   font-family: "Heebo";
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-bottom: 10px;
 `;
 
