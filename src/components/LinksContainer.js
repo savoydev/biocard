@@ -19,7 +19,7 @@ left: 0;
 right: 0;
 z-index: 2;
 bottom: -10px;
-padding: 10px 8px 40px 8px;
+padding: 10px 8px 20px 8px;
 text-align: center;
 border-radius: ${props => props.theme.cardStyle.BORDER_RADIUS};
 box-shadow: ${props => props.theme.cardStyle.CARD_TOP_SHADOW};
@@ -28,7 +28,7 @@ button{
   margin: 0 6px;
   display: inline-block;
   padding: 10px 7px;
-  font-size: 1rem;
+  font-size: 1.15rem;
   min-width: 0;
   margin-bottom: 0;  svg {
     position: relative;
