@@ -6,9 +6,13 @@ import mp3Audio from "../audio/mixed-feelings.mp3"
 import oggAudio from "../audio/mixed-feelings.ogg"
 
 const StyledIframe = styled.iframe`
-height: 80vh;
 width: 100%;
 border: none;
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+height: 100%;
 `
 
 const closeAndStopAudio = (props) => {
@@ -17,17 +21,36 @@ const closeAndStopAudio = (props) => {
     props.closeAR()
 }
 
+const ARSlideCard = styled(SlideCard)`
+height: 70vh;
+`
+
+const ARSlideCardHeader = styled.div`
+position: relative;
+z-index: 1;
+text-align: center;
+`
+
+const ARSlideCardButtonRow = styled.div`
+position: absolute;
+bottom: 0;
+z-index: 1;
+left: 0;
+right: 0;
+`
+
 const ARViewer = props => {
-    return <SlideCard show={props.show}>
-       <SlideCard.Header>Point camera at the QR code</SlideCard.Header>
+    return <ARSlideCard show={props.show}>
+       <SlideCard.Header><ARSlideCardHeader>Point camera at the QR code</ARSlideCardHeader></SlideCard.Header>
     <StyledIframe src="/AR.html"></StyledIframe>
-    <Button type="button" onClick={() => {closeAndStopAudio(props)}}>Close</Button>
+    <ARSlideCardButtonRow><Button type="button" onClick={() => {closeAndStopAudio(props)}}>Close</Button></ARSlideCardButtonRow>
+    
     <audio id="arSong" autoPlay>
             <source src={oggAudio} type="audio/ogg" />
             <source src={mp3Audio} type="audio/mpeg" />
           Your browser does not support the audio element.
           </audio> 
-    </SlideCard>
+    </ARSlideCard>
 }
 
 export default ARViewer
