@@ -27,7 +27,7 @@ const CardStyleExample = styled.button`
 `;
 
 const StyledButton = styled(Button)`
-  margin: 40px 0 60px 0;
+  margin: 40px 0 40px 0;
 `;
 
 const getAllCardStyles = props => {

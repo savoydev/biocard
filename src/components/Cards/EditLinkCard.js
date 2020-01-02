@@ -34,7 +34,7 @@ const InputField = styled.input.attrs(props => ({
 `;
 
 const StyledButton = styled(Button)`
-  margin: 20px 0 60px 0;
+  margin: 20px 0 40px 0;
 `;
 
 class EditCardLink extends React.Component {

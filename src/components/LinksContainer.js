@@ -33,6 +33,7 @@ button{
   padding: 10px 0;
   font-size: 1.15rem;
   min-width: 0;
+  color: #000;
   margin-bottom: 0;  svg {
     position: relative;
     top: 6px;
