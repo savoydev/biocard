@@ -29,6 +29,8 @@ const ARSlideCardHeader = styled.div`
 position: relative;
 z-index: 1;
 text-align: center;
+color: #fff;
+text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.75);
 `
 
 const ARSlideCardButtonRow = styled.div`

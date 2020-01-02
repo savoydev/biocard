@@ -38,6 +38,8 @@ export const StyledSlideCard = styled(StyledBasicCard)`
   left: 0;
   right: 0;
   z-index: 3;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
   box-shadow: ${props => props.theme.cardStyle.CARD_TOP_SHADOW};
 `;
 
