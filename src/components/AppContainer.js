@@ -68,7 +68,7 @@ class AppContainer extends React.Component {
               updateColor={this.updateColor}
               updateCardStyle={this.updateCardStyle}
             />
-            <SocialMediaCard />
+            {/* <SocialMediaCard /> */}
           </StyledAppContainer>
         </ThemeProvider>
       </React.Fragment>

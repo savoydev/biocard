@@ -2,8 +2,8 @@ import React from 'react';
 import SlideCard from './Cards/SlideCard';
 import styled from 'styled-components';
 import Button from './Common/Button';
-import mp3Audio from "../audio/mixed-feelings.mp3"
-import oggAudio from "../audio/mixed-feelings.ogg"
+// import mp3Audio from "../audio/mixed-feelings.mp3"
+// import oggAudio from "../audio/mixed-feelings.ogg"
 
 const StyledIframe = styled.iframe`
 width: 100%;
