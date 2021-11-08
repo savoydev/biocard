@@ -10,9 +10,9 @@
     "styled-components": "^5.3.3"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
+    "start": "react-is start",
+    "build": "react-is build",
+    "test": "react-is test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
