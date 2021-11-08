@@ -1,7 +1,7 @@
-import React from "react";
-import styled, { keyframes } from "styled-components";
-import { slideInUp, slideOutDown } from "react-animations";
-import { StyledBasicCard } from "./BasicCard";
+import React from 'react';
+import styled, { keyframes } from 'styled-components';
+import { slideInUp, slideOutDown } from 'react-animations';
+import { StyledBasicCard } from './BasicCard';
 
 const slideInUpAnimation = keyframes`${slideInUp}`;
 const slideOutDownAnimation = keyframes`${slideOutDown}`;
@@ -12,7 +12,7 @@ const StyledSlideCardHeader = styled.div`
   margin-bottom: 10px;
 `;
 
-const SlideCardHeader = props => {
+const SlideCardHeader = (props) => {
   return <StyledSlideCardHeader>{props.children}</StyledSlideCardHeader>;
 };
 
@@ -24,26 +24,30 @@ const StyledSlideCardButtonRow = styled.div`
   }
 `;
 
-const SlideCardButtonRow = props => {
+const SlideCardButtonRow = (props) => {
   return <StyledSlideCardButtonRow>{props.children}</StyledSlideCardButtonRow>;
 };
 
 export const StyledSlideCard = styled(StyledBasicCard)`
   background-color: #fff;
   animation: 0.5s
-    ${props => (props.show ? slideInUpAnimation : slideOutDownAnimation)};
+    ${(props) => (props.show ? slideInUpAnimation : slideOutDownAnimation)};
   position: fixed;
-  ${props => (props.show ? "bottom: 0;" : "bottom: -200%;")};
+  ${(props) => (props.show ? 'bottom: 0;' : 'bottom: -200%;')};
   margin: 0;
   left: 0;
   right: 0;
   z-index: 3;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  box-shadow: ${props => props.theme.cardStyle.CARD_TOP_SHADOW};
+  box-shadow: ${(props) => props.theme.cardStyle.CARD_TOP_SHADOW};
+
+  @media (min-width: 1000px) {
+    left: 120px;
+  }
 `;
 
-const SlideCard = props => {
+const SlideCard = (props) => {
   return (
     <StyledSlideCard as="div" {...props}>
       {props.children}

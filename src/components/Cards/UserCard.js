@@ -1,6 +1,6 @@
-import React from "react";
-import styled from "styled-components";
-import { StyledBasicCard } from "./BasicCard";
+import React from 'react';
+import styled from 'styled-components';
+import { StyledBasicCard } from './BasicCard';
 
 const StyledUserCard = styled(StyledBasicCard)`
   min-height: 100px;
@@ -9,6 +9,10 @@ const StyledUserCard = styled(StyledBasicCard)`
   :hover {
     transform: none;
     box-shadow: none;
+  }
+
+  @media (min-width: 1000px) {
+    grid-column: 1;
   }
 `;
 
@@ -21,18 +25,18 @@ const UserName = styled.h1`
   font-weight: bold;
   font-family: "Heebo";
   margin: 0;
-  color: ${props => props.theme.color.BASE};
+  color: ${(props) => props.theme.color.BASE};
 `;
 
 const UserDescription = styled.p`
-  color: ${props => props.theme.color.BASE};
+  color: ${(props) => props.theme.color.BASE};
   font-size: 1rem;
   margin: 0;
 `;
 
 const UserImage = styled.div`
-  background: ${props => props.theme.color.DEFAULT_GRADIENT}
-  box-shadow: ${props => props.theme.cardStyle.USER_IMAGE_SHADOW};
+  background: ${(props) => props.theme.color.DEFAULT_GRADIENT}
+  box-shadow: ${(props) => props.theme.cardStyle.USER_IMAGE_SHADOW};
   border-radius: 100%;
   height: 100px;
   width: 100px;
@@ -46,14 +50,14 @@ const UserImage = styled.div`
     left: 3px;
     border-radius: 100%;
     background-color: #fff;
-    background-image: url('${props => props.image}');
+    background-image: url('${(props) => props.image}');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
   }
 `;
 
-const UserCard = props => {
+const UserCard = (props) => {
   return (
     <StyledUserCard as="div">
       {props.user.image && (
